@@ -1,0 +1,51 @@
+<style>
+  .zoom-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.50);display:flex;align-items:center;justify-content:center;z-index:99999;cursor:zoom-out}
+  .zoom-overlay .zoom-content{max-width:95%;max-height:95%;overflow:auto;padding:8px}
+  .zoom-overlay .zoom-content svg{max-width:100%;height:auto;max-height:95vh;display:block}
+  .mermaid svg{cursor:zoom-in;pointer-events:auto}
+</style>
+<script>
+(function(){
+  function makeZoomable(node){
+    if(!node) return;
+    var svg = (node.tagName === 'svg') ? node : node.querySelector && node.querySelector('svg');
+    if(!svg) return;
+    var container = svg.closest('.mermaid') || node;
+    if(container.dataset.zoomable) return;
+    container.dataset.zoomable = 'true';
+    container.style.cursor = 'zoom-in';
+
+    container.addEventListener('click', function(ev){
+      try{ ev.stopPropagation(); ev.preventDefault(); }catch(e){}
+      var overlay = document.createElement('div');
+      overlay.className = 'zoom-overlay';
+      var wrapper = document.createElement('div');
+      wrapper.className = 'zoom-content';
+      var clone = svg.cloneNode(true);
+      clone.removeAttribute('width'); clone.removeAttribute('height');
+      clone.style.maxWidth = '100%'; clone.style.height = 'auto';
+      wrapper.appendChild(clone);
+      overlay.appendChild(wrapper);
+      document.body.appendChild(overlay);
+      var prevOverflow = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+      function close(){ if(document.body.contains(overlay)){ document.body.removeChild(overlay); document.body.style.overflow = prevOverflow; document.removeEventListener('keydown', esc); } }
+      overlay.addEventListener('click', close);
+      function esc(e){ if(e.key === 'Escape') close(); }
+      document.addEventListener('keydown', esc);
+    }, true);
+  }
+
+  function attachAll(){
+    var list = Array.from(document.querySelectorAll('.mermaid, pre.mermaid, .language-mermaid'));
+    list.forEach(makeZoomable);
+    Array.from(document.querySelectorAll('svg')).forEach(function(s){ if(s.closest('.mermaid')) return; makeZoomable(s); });
+  }
+
+  if(document.readyState === 'complete' || document.readyState === 'interactive') attachAll();
+  else document.addEventListener('DOMContentLoaded', attachAll);
+
+  var mo = new MutationObserver(function(m){ attachAll(); });
+  mo.observe(document.body, { childList:true, subtree:true });
+})();
+</script>

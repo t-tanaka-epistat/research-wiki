@@ -1,0 +1,560 @@
+% Options for packages loaded elsewhere
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  pandoc]{bxjsarticle}
+\usepackage{xcolor}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+% Make \paragraph and \subparagraph free-standing
+\makeatletter
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}{
+    \@ifstar
+      \xxxParagraphStar
+      \xxxParagraphNoStar
+  }
+  \newcommand{\xxxParagraphStar}[1]{\oldparagraph*{#1}\mbox{}}
+  \newcommand{\xxxParagraphNoStar}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}{
+    \@ifstar
+      \xxxSubParagraphStar
+      \xxxSubParagraphNoStar
+  }
+  \newcommand{\xxxSubParagraphStar}[1]{\oldsubparagraph*{#1}\mbox{}}
+  \newcommand{\xxxSubParagraphNoStar}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+\makeatother
+
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{241,243,245}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.40,0.45,0.13}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\ExtensionTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.28,0.35,0.67}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.46,0.62}{#1}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.07,0.07,0.07}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+
+
+
+
+
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+
+
+ 
+
+
+\makeatletter
+\@ifpackageloaded{tcolorbox}{}{\usepackage[skins,breakable]{tcolorbox}}
+\@ifpackageloaded{fontawesome5}{}{\usepackage{fontawesome5}}
+\definecolor{quarto-callout-color}{HTML}{909090}
+\definecolor{quarto-callout-note-color}{HTML}{0758E5}
+\definecolor{quarto-callout-important-color}{HTML}{CC1914}
+\definecolor{quarto-callout-warning-color}{HTML}{EB9113}
+\definecolor{quarto-callout-tip-color}{HTML}{00A047}
+\definecolor{quarto-callout-caution-color}{HTML}{FC5300}
+\definecolor{quarto-callout-color-frame}{HTML}{acacac}
+\definecolor{quarto-callout-note-color-frame}{HTML}{4582ec}
+\definecolor{quarto-callout-important-color-frame}{HTML}{d9534f}
+\definecolor{quarto-callout-warning-color-frame}{HTML}{f0ad4e}
+\definecolor{quarto-callout-tip-color-frame}{HTML}{02b875}
+\definecolor{quarto-callout-caution-color-frame}{HTML}{fd7e14}
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\AtBeginDocument{%
+\ifdefined\contentsname
+  \renewcommand*\contentsname{Table of contents}
+\else
+  \newcommand\contentsname{Table of contents}
+\fi
+\ifdefined\listfigurename
+  \renewcommand*\listfigurename{List of Figures}
+\else
+  \newcommand\listfigurename{List of Figures}
+\fi
+\ifdefined\listtablename
+  \renewcommand*\listtablename{List of Tables}
+\else
+  \newcommand\listtablename{List of Tables}
+\fi
+\ifdefined\figurename
+  \renewcommand*\figurename{Figure}
+\else
+  \newcommand\figurename{Figure}
+\fi
+\ifdefined\tablename
+  \renewcommand*\tablename{Table}
+\else
+  \newcommand\tablename{Table}
+\fi
+}
+\@ifpackageloaded{float}{}{\usepackage{float}}
+\floatstyle{ruled}
+\@ifundefined{c@chapter}{\newfloat{codelisting}{h}{lop}}{\newfloat{codelisting}{h}{lop}[chapter]}
+\floatname{codelisting}{Listing}
+\newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
+\makeatother
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={VS Code + Quarto + R 研究環境構築完全マニュアル},
+  pdfauthor={Daisuke Tanaka},
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+
+\title{VS Code + Quarto + R 研究環境構築完全マニュアル}
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+}
+\makeatother
+\subtitle{博士課程学生のための再現性ある解析・執筆環境の構築（GitHub
+Copilot / セキュリティ対策 / PDF出力対応）}
+\author{Daisuke Tanaka}
+\date{2025-12-20}
+\begin{document}
+\maketitle
+
+
+\section{はじめに：なぜ RStudio ではなく VS Code
+なのか？}\label{ux306fux3058ux3081ux306bux306aux305c-rstudio-ux3067ux306fux306aux304f-vs-code-ux306aux306eux304b}
+
+長年 R ユーザーに愛されてきた RStudio から、Visual Studio Code (VS Code)
+へ移行する研究者が増えている。本マニュアルは、その環境構築手順と、\textbf{研究データのセキュリティを守るための運用ルール}をまとめたものである。
+
+\subsection{VS Code
+を推奨する3つの理由}\label{vs-code-ux3092ux63a8ux5968ux3059ux308b3ux3064ux306eux7406ux7531}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{AI支援（GitHub Copilot）との統合が最強}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    エラーの原因特定、コード自動生成、数式の LaTeX 化まで、強力な AI
+    が「副操縦士」としてサポートしてくれる。
+  \end{itemize}
+\item
+  \textbf{Quarto のプレビュー速度と柔軟性}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    RStudio
+    より高速で、Markdown、Mermaid（作図）、Rコード、プレビュー画面を自由に配置できる。
+  \end{itemize}
+\item
+  \textbf{多言語対応}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    将来的に Python や Shell Script を使う際も、同じエディタで完結する。
+  \end{itemize}
+\end{enumerate}
+
+\subsection{デメリットとピットフォール（共有時の注意点）}\label{ux30c7ux30e1ux30eaux30c3ux30c8ux3068ux30d4ux30c3ux30c8ux30d5ux30a9ux30fcux30ebux5171ux6709ux6642ux306eux6ce8ux610fux70b9}
+
+VS Code は強力だが、以下の点に注意が必要である。
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{初期設定の壁}: RStudio ならインストールするだけで動くが、VS
+  Code
+  は「拡張機能」や「パス設定」が必要。本マニュアルの手順を遵守すること。
+\item
+  \textbf{PDF出力の日本語フォント}:
+  PDF化する際、日本語が表示されないトラブルが起きやすい（後述の
+  \texttt{TinyTeX} 設定で対応）。
+\item
+  \textbf{【最重要】データ漏洩リスク}: GitHub
+  連携が簡単なため、\textbf{「患者データ（PMSデータ等）を誤ってアップロードしてしまう」}リスクがある。これを防ぐ
+  \texttt{.gitignore} 設定は必須である（第5章参照）。
+\end{itemize}
+
+\section{基礎環境のインストール (R \&
+Rtools)}\label{ux57faux790eux74b0ux5883ux306eux30a4ux30f3ux30b9ux30c8ux30fcux30eb-r-rtools}
+
+統計解析のエンジンとなる R 言語環境を構築する。
+
+\subsection{R 本体}\label{r-ux672cux4f53}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \href{https://cran.r-project.org/bin/windows/base/}{CRAN}
+  から最新のインストーラーをダウンロード・実行する。
+\end{enumerate}
+
+\subsection{Rtools（最重要）}\label{rtoolsux6700ux91cdux8981}
+
+Windows
+でパッケージをソースからビルドするために必須。これがないとパッケージが入らないことがある。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \href{https://cran.r-project.org/bin/windows/Rtools/}{Rtools Download}
+  から、R のバージョンに合うもの（例: Rtools44）をダウンロード。
+\item
+  インストール時のオプションで \textbf{``Add rtools to system PATH''}
+  に必ずチェックを入れる。
+\end{enumerate}
+
+\section{VS Code \& Quarto
+の導入}\label{vs-code-quarto-ux306eux5c0eux5165}
+
+\subsection{VS Code
+本体と拡張機能}\label{vs-code-ux672cux4f53ux3068ux62e1ux5f35ux6a5fux80fd}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \href{https://code.visualstudio.com/}{VS Code 公式} からインストール。
+\item
+  左側の「拡張機能 (Extensions)」から以下をインストール。
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \textbf{Japanese Language Pack}: 日本語化。
+  \item
+    \textbf{Quarto}: 執筆・プレビュー用。
+  \item
+    \textbf{R} (Publisher: REditorSupport): コード補完・実行用。
+  \item
+    \textbf{Markdown Preview Mermaid Support}: フローチャート用。
+  \item
+    \textbf{Git Graph}: コミット履歴の可視化。
+  \end{itemize}
+\end{enumerate}
+
+\subsection{Quarto CLI (Command Line
+Interface)}\label{quarto-cli-command-line-interface}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \href{https://quarto.org/docs/get-started/}{Quarto Get Started} から
+  Windows 用 \texttt{.msi} をダウンロード・インストール。
+\item
+  \textbf{重要}: インストール後、パス反映のため \textbf{VS Code
+  を再起動}する。
+\end{enumerate}
+
+\section{Git と GitHub
+のセットアップ}\label{git-ux3068-github-ux306eux30bbux30c3ux30c8ux30a2ux30c3ux30d7}
+
+\subsection{アカウントとインストール}\label{ux30a2ux30abux30a6ux30f3ux30c8ux3068ux30a4ux30f3ux30b9ux30c8ux30fcux30eb}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \href{https://github.com/}{GitHub}
+  でアカウント作成（学生は大学メアド推奨）。
+\item
+  \href{https://gitforwindows.org/}{Git for Windows}
+  をインストール（デフォルト設定でOK）。
+\end{enumerate}
+
+\subsection{ユーザー設定と認証}\label{ux30e6ux30fcux30b6ux30fcux8a2dux5b9aux3068ux8a8dux8a3c}
+
+VS Code のターミナルで以下を実行。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{git}\NormalTok{ config }\AttributeTok{{-}{-}global}\NormalTok{ user.name }\StringTok{"Taro Tanaka"}
+\FunctionTok{git}\NormalTok{ config }\AttributeTok{{-}{-}global}\NormalTok{ user.email }\StringTok{"taro.tanaka@univ.ac.jp"}
+\end{Highlighting}
+\end{Shaded}
+
+その後、VS Code の「ソース管理」アイコンから GitHub にサインインする。
+
+\subsection{GitHub Education (Copilot
+無料化)}\label{github-education-copilot-ux7121ux6599ux5316}
+
+博士課程学生は \textbf{GitHub Copilot} を無料で利用できる。 1.
+\href{https://education.github.com/pack}{GitHub Education}
+から学生証をアップロードして申請。 2. 承認後、VS Code に拡張機能
+``GitHub Copilot'' を入れ、サインインする。
+
+\section{【重要】セキュリティ対策
+(.gitignore)}\label{ux91cdux8981ux30bbux30adux30e5ux30eaux30c6ux30a3ux5bfeux7b56-.gitignore}
+
+研究データ（特に PMS データや患者リスト）は、絶対に GitHub
+上に公開してはならない。 Git の管理対象から除外する設定ファイル
+\texttt{.gitignore} を必ず設定する。
+
+\subsection{.gitignore
+の設定手順}\label{gitignore-ux306eux8a2dux5b9aux624bux9806}
+
+プロジェクトフォルダの直下に \texttt{.gitignore}
+という名前のファイル（拡張子なし）を作成し、以下を記述する。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\# R 関連のシステムファイル}
+\NormalTok{.Rproj.user}
+\NormalTok{.Rhistory}
+\NormalTok{.RData}
+\NormalTok{.Ruserdata}
+
+\NormalTok{\# 【最重要】データファイル（これらは絶対にアップロードしない）}
+\NormalTok{*.csv}
+\NormalTok{*.xlsx}
+\NormalTok{*.xls}
+\NormalTok{*.rds}
+\NormalTok{*.rda}
+\NormalTok{*.tsv}
+\NormalTok{*.txt}
+
+\NormalTok{\# 出力ファイル（PDFやキャッシュなど）}
+\NormalTok{*.pdf}
+\NormalTok{*.html}
+\NormalTok{*\_files/}
+\NormalTok{*\_cache/}
+
+\NormalTok{\# 機密情報（APIキーなど）}
+\NormalTok{.env}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{tcolorbox}[enhanced jigsaw, colframe=quarto-callout-warning-color-frame, toprule=.15mm, rightrule=.15mm, colback=white, opacitybacktitle=0.6, toptitle=1mm, left=2mm, opacityback=0, coltitle=black, arc=.35mm, breakable, bottomrule=.15mm, bottomtitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{セキュリティ警告}, leftrule=.75mm, colbacktitle=quarto-callout-warning-color!10!white]
+
+上記の \texttt{.gitignore} を設定していても、手動で
+\texttt{git\ add\ -f} をすれば強制的に追加できてしまう。
+コミットする前には必ず
+\textbf{「個人情報が含まれるファイルが含まれていないか」} を Git Graph
+等で確認する習慣をつけること。
+万が一アップロードしてしまった場合は、リポジトリごと削除して作り直すのが最も安全である。
+
+\end{tcolorbox}
+
+\section{VS Code の最適化設定
+(settings.json)}\label{vs-code-ux306eux6700ux9069ux5316ux8a2dux5b9a-settings.json}
+
+R をスムーズに動かすための設定。\texttt{Ctrl\ +\ ,} →
+右上のアイコン（JSONを開く）で以下を追記する。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{\{}
+    \DataTypeTok{"r.rpath.windows"}\FunctionTok{:} \StringTok{"C:}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{Program Files}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{R}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{R{-}4.4.2}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{bin}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{x64}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{R.exe"}\FunctionTok{,}
+    \DataTypeTok{"r.plot.view"}\FunctionTok{:} \StringTok{"httpgd"}\FunctionTok{,}
+    \DataTypeTok{"editor.bracketPairColorization.enabled"}\FunctionTok{:} \KeywordTok{true}\FunctionTok{,}
+    \DataTypeTok{"r.alwaysUseActiveTerminal"}\FunctionTok{:} \KeywordTok{true}\FunctionTok{,}
+    \DataTypeTok{"r.sessionWatcher"}\FunctionTok{:} \KeywordTok{true}
+\FunctionTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+※ \texttt{httpgd} を使う場合は \texttt{install.packages("httpgd")}
+が必要。
+
+\section{文書の出力 (Word, PDF,
+HTML)}\label{ux6587ux66f8ux306eux51faux529b-word-pdf-html}
+
+Quarto は、1つの \texttt{.qmd} ファイルから多様な形式に出力できる。
+
+\subsection{準備：PDF
+エンジンのインストール}\label{ux6e96ux5099pdf-ux30a8ux30f3ux30b8ux30f3ux306eux30a4ux30f3ux30b9ux30c8ux30fcux30eb}
+
+PDF 出力には LaTeX 環境が必要だが、Quarto 専用の軽量版 \texttt{TinyTeX}
+を使うのが最も簡単である。 ターミナルで以下を1回実行する。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{quarto}\NormalTok{ install tinytex}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{出力形式の指定
+(YAMLヘッダー)}\label{ux51faux529bux5f62ux5f0fux306eux6307ux5b9a-yamlux30d8ux30c3ux30c0ux30fc}
+
+\texttt{.qmd}
+ファイル冒頭を以下のように記述することで、形式を切り替えられる。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{{-}{-}{-}}
+\FunctionTok{title}\KeywordTok{:}\AttributeTok{ }\StringTok{"研究計画書"}
+\FunctionTok{format}\KeywordTok{:}
+\AttributeTok{  }\FunctionTok{html}\KeywordTok{:}
+\AttributeTok{    }\FunctionTok{toc}\KeywordTok{:}\AttributeTok{ }\CharTok{true}\CommentTok{       \# 普段のプレビュー用}
+\AttributeTok{  }\FunctionTok{docx}\KeywordTok{:}
+\AttributeTok{    }\FunctionTok{toc}\KeywordTok{:}\AttributeTok{ }\CharTok{true}\CommentTok{       \# 指導教官への提出用（Word）}
+\AttributeTok{  }\FunctionTok{pdf}\KeywordTok{:}
+\AttributeTok{    }\FunctionTok{documentclass}\KeywordTok{:}\AttributeTok{ scrartcl}\CommentTok{ \# PDF出力用}
+\PreprocessorTok{{-}{-}{-}}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{出力実行 (Render)}\label{ux51faux529bux5b9fux884c-render}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{コマンドパレット}: \texttt{Ctrl\ +\ Shift\ +\ P} →
+  \texttt{Quarto:\ Render} を選択。
+\item
+  \textbf{形式選択}: \texttt{docx}, \texttt{pdf}, \texttt{html}
+  から選択する。
+\item
+  数秒〜数十秒でファイルが生成され、自動で開かれる。
+\end{enumerate}
+
+\section{トラブルシューティング}\label{ux30c8ux30e9ux30d6ux30ebux30b7ux30e5ux30fcux30c6ux30a3ux30f3ux30b0}
+
+\subsection{Mermaid
+の図が表示されない}\label{mermaid-ux306eux56f3ux304cux8868ux793aux3055ux308cux306aux3044}
+
+VS Code は記法に厳格である。 * バッククォート
+\texttt{\textasciigrave{}\textasciigrave{}\textasciigrave{}}
+は必ず左端に寄せる（インデント禁止）。 * \texttt{\%\%\{init:\ ...\}\%\%}
+内は必ずダブルクォート \texttt{"} を使う。
+
+\subsection{パッケージが見つからない (not
+available)}\label{ux30d1ux30c3ux30b1ux30fcux30b8ux304cux898bux3064ux304bux3089ux306aux3044-not-available}
+
+開発版 R (x.x.0) を使用時、CRAN にバイナリがない場合がある。
+\texttt{remotes} パッケージを使い GitHub からインストールする。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{install.packages}\NormalTok{(}\StringTok{"remotes"}\NormalTok{)}
+\NormalTok{remotes}\SpecialCharTok{::}\FunctionTok{install\_github}\NormalTok{(}\StringTok{"nx10/httpgd"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{本マニュアルを遵守し、安全かつ効率的な研究ライフを。}
+
+
+
+
+\end{document}

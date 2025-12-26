@@ -1,0 +1,473 @@
+---
+title: "VS Code + Quarto + R 研究環境構築完全マニュアル"
+subtitle: "博士課程学生のための再現性ある文献検索・文献管理・研究計画・解析・執筆環境の構築（GitHub Copilot / セキュリティ対策）"
+# author: "Daisuke Tanaka"
+date: today
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    theme: cosmo
+    include-in-header: header-zoom.html
+    #css: styles.css #カスタムcssを含めるとmermaidがレンダリングエラーになるので一旦指定しない
+    filters:
+      - lightbox
+    lightbox: auto
+---
+# Introduction: 哲学と目的
+
+本ドキュメントは、医学・疫学分野の博士課程において、**「再現性 (Reproducibility)」「効率性 (Efficiency)」「拡張性 (Scalability)」**を最大化するために構築された研究エコシステムの仕様書である。
+
+従来のツール (R, Git) に現代的なAI (LLM) を有機的に統合し、文献探索から論文執筆までのプロセスを「工場（Factory）」のようにシステム化することを目的とする。
+
+## Core Philosophy
+1.  **Single Source of Truth:** データと解析コードこそが正義であり、Word上の手入力数値は信じない。
+2.  **AI Synergy:** AIは「思考の壁打ち相手」かつ「単純作業の自動化担当」として徹底活用する。
+3.  **Reproducibility:** 3年後の自分、あるいは未来の後輩が、エンターキー1つで全く同じ図表を再現できるようにする。
+
+---
+
+# Architecture: 全体像とツール群
+
+本エコシステムは、情報の流れに合わせて4つのレイヤーで構成される。
+
+## Layer 1: The Radar (探索・俯瞰)
+* 広大な海からリサーチクエスチョン (RQ) に合致するエビデンスを探知する。
+  * **Consensus / Elicit:** RQに基づくAI文献検索。
+  * **Mapify:** 概念のマインドマップ化。
+
+## Layer 2: The Filter (収集・選別)
+* 情報のノイズを除去し、精読すべきものを管理する。
+  * **Paperpile:** 引用管理・PDF書庫（iPad連携）。
+  * **NotebookLM:** 大量のPDFを読み込ませたAI要約・トリアージ。
+
+## Layer 3: The Brain (思考・管理)
+* プロジェクトの進行、アイディアのバージョン管理、知識の蓄積。
+  * **Notion:** プロジェクトハブ、タスク管理、統計Wiki。
+  * **ChatGPT / Gemini:** 壁打ち、コード生成、Notionへの自動記録。
+  * **Zapier:** AIとNotionをつなぐコネクタ。
+
+## Layer 4: The Factory (実装・執筆)
+* 最終的な成果物（論文・解析結果）を生産する。
+  * **VSCode:** 統合開発環境 (IDE)。
+  * **Quarto (R):** 解析と執筆の統合プラットフォーム。
+  * **Git / GitHub:** 変更履歴の管理。
+
+## Ecosystem Diagram
+```{mermaid}
+%%| label: fig-workflow
+%%| fig-cap: "Research Ecosystem Data Flow"
+%%| fig-format: svg
+%%| lightbox: true
+
+flowchart LR
+subgraph Exploration["The Radar (探索)"]
+    direction TB
+    idea(Research Idea) --> search["AI Search<br/>Consensus/Elicit"]
+    search --> map["Mapify<br/>(Visualization)"]
+end
+
+subgraph Selection["The Filter (選別)"]
+    direction TB
+    map --> notebook["NotebookLM<br/>(PDF Triage)"]
+    notebook -- "Selected Papers" --> paperpile[(Paperpile<br/>Library)]
+    paperpile -- "iPad Sync" --> ipad[Reading on iPad]
+    ipad -- "Highlights" --> paperpile
+end
+
+subgraph Production["The Factory (実装)"]
+    direction TB
+    vscode{VSCode<br/>Quarto + R}
+    data["Raw Data<br/>Read Only"] -.-> vscode
+    paperpile -- "BibTeX Key" --> vscode
+    vscode -- "Commit & Push" --> github((GitHub))
+    vscode -- "Render" --> output[Thesis / Slides]
+end
+
+subgraph Management["The Brain (管理)"]
+    direction TB
+    gpt[ChatGPT / Gemini] -- "Zapier Action" --> wiki["Notion<br/>Stats Wiki"]
+    gpt -- "Drafting" --> portfolio[(Notion<br/>Study Portfolio)]
+    portfolio -- "Task/Protocol" --> vscode
+end
+
+Exploration --> Selection
+Selection --> Management
+Management --> Production
+
+style Production fill:#f7d9d9,stroke:#333,stroke-width:2px
+style Exploration fill:#f0f8ff,stroke:#333,stroke-width:1px
+style Selection fill:#f7fbec,stroke:#333,stroke-width:1px
+style Management fill:#fff7e6,stroke:#333,stroke-width:1px
+
+style idea fill:#ffffff,stroke:#333,stroke-width:1px
+style search fill:#eef6ff,stroke:#333,stroke-width:1px
+style map fill:#f0fff4,stroke:#333,stroke-width:1px
+style notebook fill:#fff5e6,stroke:#333,stroke-width:1px
+style paperpile fill:#fff0f6,stroke:#333,stroke-width:1px
+style ipad fill:#f6fff5,stroke:#333,stroke-width:1px
+style vscode fill:#f7f7ff,stroke:#333,stroke-width:1px
+style data fill:#ffffff,stroke:#333,stroke-width:1px
+style github fill:#f0f0f0,stroke:#333,stroke-width:1px
+style output fill:#fffaf0,stroke:#333,stroke-width:1px
+style gpt fill:#f7fbff,stroke:#333,stroke-width:1px
+style wiki fill:#fffacd,stroke:#ffd700,stroke-width:1px
+style portfolio fill:#fff8f4,stroke:#333,stroke-width:1px
+```
+
+# 学生向け推奨ツール・学割プラン
+
+| ツール | 学割・プラン名 | 導入アクション |
+|--------|----------------|----------------|
+| GitHub | Student Developer Pack | 公式サイトから申請。Copilot無料、Privateリポジトリ無制限。 |
+| Notion | Education Plus Plan | 大学アドレスで登録/変更すれば自動適用。ファイル容量無制限。 |
+| Paperpile | Academic Pricing | 登録時にUniversityを選択。月額約$3 (一般の半額)。 |
+| VS Code | Free | 公式サイトからDL。拡張機能 Quarto, R, Git Graph を推奨。 |
+| R / RStudio | Free | Posit からDL。 |
+| Zapier | Free Tier | 月100タスクまで無料。Wiki保存用ならこれで十分。 |
+
+# Notion Configuration: 司令塔の設計図
+
+Notionは「情報の倉庫」ではなく「思考の司令塔」として設計する。
+以下に、2つのコアとなるデータベースと、ページ階層の推奨設計を示す。
+
+## Stats Knowledge Base (統計Wiki) の構造
+
+後述の「俺の統計事典」を構築するためのデータベース設計。ChatGPT/Zapier連携の受け皿となる。
+
+| プロパティ名 | 種類 | 用途・設定例 |
+| :--- | :--- | :--- |
+| **Term** | Title | 用語名 (例: Cox Proportional Hazards Model) |
+| **Definition (Math)** | Text | 数式定義 (LaTeX形式)。<br>`` $h(t|X) = h_0(t)\exp(\beta X)$ `` |
+| **Explanation** | Text | 直感的な解説。「要は～である」という平易な言葉。 |
+| **Category** | Multi-select | `生存時間解析`, `因果推論`, `機械学習` 等 |
+| **Related Study** | Relation | `Study Portfolio DB` とリレーション。<br>どの研究で使った手法か紐付ける。 |
+| **Understanding** | Select | `🌑未習得`, `🌓概念のみ`, `🌕実装可`, `🌟説明可` |
+| **Last Reviewed** | Date | 最終復習日 (間隔反復用) |
+
+::: {.callout-tip}
+**Quiz Mode:**
+Notionの「トグルリスト」機能を使い、用語名だけを表示して中身（定義・解説）を隠すことで、暗記カードとして利用できる。
+:::
+
+## PhD Research Dashboard (研究ホーム) の階層構造
+
+研究の全体像を俯瞰し、迷子にならないための階層構造。
+
+```
+🏠 PhD Research Dashboard (Top Page)
+│
+├── 🎯 Goals & Countdown (Callout)
+│   └── "D-Thesis提出まであとXX日 / 今週の目標"
+│
+├── 📂 Study Portfolio (Gallery View)
+│   │   # 各研究の個別ページ (後述のテンプレートを使用)
+│   ├── 📄 Study 1: Baseline Survey
+│   ├── 📄 Study 2: Longitudinal Analysis
+│   └── 📄 Study 3: TTE Implementation
+│
+├── 📅 Roadmap & Tasks (Timeline View)
+│   └── 学会発表、論文投稿、倫理審査のマイルストーン管理
+│
+└── 📚 Literature Matrix (Table View)
+    └── Paperpileの重点論文リンクとGemini要約リスト
+```
+
+## "Draft Log" Workflow: AIとの壁打ち管理法
+Gemini/ChatGPTとの対話で生まれたアイディアやプロトコル案を、「Study Page」 内でどのように管理するか。バージョン管理システム (Git) に移行する前の「砂場」としての運用ルール。
+
+**Study Page Template (詳細ページの中身)**
+各Studyのページ内には、以下のセクションを設ける。
+
+* **Study X: [研究タイトル]**
+  * Status: Protocol Drafting
+  * Research Question: ...
+  * GitHub Repo: Link
+---
+**💡 Ideation & Draft Logs (思考の履歴) Geminiとの壁打ち結果をここに時系列で保存する**
+
+* ▶ **2025-XX-XX: Ver 0.1 - Initial Concept (トグル)**
+
+* ▶ **2025-XX-XX: Ver 0.2 - With PS Matching (トグル)**
+  * プロンプト: "交絡調整のためにPSマッチングを追加したプロトコルに修正して"
+  * 出力結果: (以下のコードブロック)
+    ```{Markdown}
+    %%| label: Gemini出力イメージ
+    # Study Protocol Draft v0.2
+    ## Study Design
+    ...
+    ```
+
+* ▶ **2025-XX-XX: Ver 1.0 - FIX for Coding (トグル)**
+これ以降はVSCode/Gitへ移行
+
+**運用ルール: "Code Block" Strategy**
+NotionにMarkdownを貼り付ける際は、**必ず「コードブロック」**を使用すること。
+
+1. Geminiで出力: アイディアや構成案をMarkdown形式で出力させる。
+2. Copy: 出力されたMarkdownをコピーする。
+3. Paste to Notion:
+    * Notion上で /code と入力し、コードブロックを作成。
+    * 言語を Markdown に設定。
+    * その中にペーストする。
+
+::: {.callout-note title="なぜコードブロックなのか？"} 
+Notionの通常テキストとして貼り付けると、勝手に整形（リスト化や太字化）され、VSCode (.qmd) に戻す際にフォーマット崩れや不要な改行が発生するため。「純粋なテキストデータ」として保存・運搬するためにコードブロックが最適である。
+:::
+
+# Paperpile × Notion: 究極の文献管理
+「積読」を防ぎ、iPadでの快適な読書を実現するためのハイブリッド運用。
+
+**ラベル管理ルール (Paperpile)**
+Paperpileのフォルダではなく「ラベル」を活用し、ステータスを可視化する。 記号を接頭辞にすることで、ソート順を固定する。
+
+* **Status (フロー)**
+  * `! To Read`: Inboxから移動した「未読」論文。iPadでまずここを開く。
+  * `> Reading`: 現在進行系で読んでいる・iPadで開きっぱなしのもの。
+  * `✔ Annotated`: 読了し、ハイライトやメモを残したもの（完了）。
+
+* **Priority (重要度)**
+  * `★ Key Paper`: 研究の根幹に関わる重要論文。
+  * `Review`: 総説。
+  * `Methodology`: 統計手法や実装コードの参考にする論文。
+
+* **Context (文脈)**
+  * `@PhD`: 博士論文用。
+  * `@Work`: 企業業務・PMS用。
+
+* **連携フロー**
+  * PC: Chrome拡張機能でPaperpileに保存し、即座にラベル(`! To Read` 等)を付ける。PCで読む際は、Paperpileのリーダーを「google drive」にすると、Geminiがサイドパネルで要約を表示してくれる。
+  * iPad: Paperpileアプリで `! To Read` ラベルを開き、読む。書き込む。
+  * PC: 読み終わった重要論文は、Notionの「Literature Matrix」にリンクを貼り、要約を残す。
+    * NotebookLMにPDFをアップロードし、要約やインフォグラフィックスを生成させ、Paperpile内に保存するのも有効。（参考：[NotebookLM活用例](https://note.com/ai_biostat/n/n5c12975136f0)）
+
+# ChatGPT × Notion: 「俺の統計Wiki」構築
+AIとの壁打ち結果を、コピペの手間なくデータベース化する。
+
+* **仕組み** : ChatGPT (Custom GPTs) から Zapier AI Actions を経由してNotion APIを叩く。
+* **運用**:
+  1. 統計用語やモデルについてChatGPTと壁打ちする。
+  2. 「これをWikiに保存して」と指示する。
+  3. 自動的にNotionの Stats Knowledge Base に「用語」「数式(LaTeX)」「解説」が構造化されて保存される。
+  4. Notionのトグル機能等を使い、後でクイズとして復習する。
+
+## 導入方法
+1. Zapierアカウントを作成し、NotionとChatGPTを連携する。
+2. 新しいZapを作成し、Triggerを「AI Action: ChatGPT」、Actionを「Notion: Create Database Item」に設定する。
+3. NotionのStats Knowledge Baseデータベースのプロパティに合わせて、Zapierのフィールドをマッピングする。
+4. ChatGPTで壁打ち中に「この内容をWikiに保存して」と指示すれば、自動的にZapが発動し、Notionに保存される。
+
+# VSCode × Quarto: 再現性のある解析環境
+
+長年 R ユーザーに愛されてきた RStudio から、Visual Studio Code (VS Code) へ移行する研究者が増えている。本マニュアルは、その環境構築手順と、**研究データのセキュリティを守るための運用ルール**をまとめたものである。WordやExcelを使わず、すべてをテキストベースで管理する。
+
+## ディレクトリ構成 (Standard Layout)
+Mono-repository構成を採用し、データとコードを厳格に分離する。
+
+```{text}
+PhD_Project_Root/
+├── .gitignore          # 必須：データを除外設定
+├── _quarto.yml         # プロジェクト全体設定
+├── data/               # データ置き場 (Git管理外)
+│   ├── raw/            # 【絶対変更禁止】 生データ (Read Only)
+│   └── processed/      # Rで加工したデータ (.rds / .csv)
+├── R/                  # 汎用関数 (theme_publication.R など)
+├── studies/            # 研究ごとの作業フォルダ
+│   ├── study1_baseline/
+│   │   ├── 01_protocol.qmd  # 計画書 (Notionから移植)
+│   │   ├── 02_analysis.qmd  # 解析コード
+│   │   └── 03_paper.qmd     # 論文原稿
+│   └── study2_longitudinal/
+├── output/             # 生成物
+│   ├── figures/        # 論文用図表
+│    └── reports/        # レンダリングされたHTML/PDF
+└── manuals/            # マニュアル類
+    └── VSCode_Quarto_R_Setup.qmd  # 本マニュアル
+```
+
+## VS Code を推奨する3つの理由
+
+1.  **AI支援（GitHub Copilot）との統合が最強**
+    * エラーの原因特定、コード自動生成、数式の LaTeX 化まで、強力な AI が「副操縦士」としてサポートしてくれる。
+2.  **Quarto のプレビュー速度と柔軟性**
+    * RStudio より高速で、Markdown、Mermaid（作図）、Rコード、プレビュー画面を自由に配置できる。
+3.  **多言語対応**
+    * 将来的に Python や Shell Script を使う際も、同じエディタで完結する。
+
+## デメリットとピットフォール（共有時の注意点）
+
+VS Code は強力だが、以下の点に注意が必要である。
+
+* **初期設定の壁**: RStudio ならインストールするだけで動くが、VS Code は「拡張機能」や「パス設定」が必要。本マニュアルの手順を遵守すること。
+* **PDF出力の日本語フォント**: PDF化する際、日本語が表示されないトラブルが起きやすい（後述の `TinyTeX` 設定で対応）。
+* **【最重要】データ漏洩リスク**: GitHub 連携が簡単なため、**「患者データ（PMSデータ等）を誤ってアップロードしてしまう」**リスクがある。これを防ぐ `.gitignore` 設定は必須である（第5章参照）。
+
+## 基礎環境のインストール (R & Rtools)
+
+統計解析のエンジンとなる R 言語環境を構築する。
+
+### R 本体
+1.  [CRAN](https://cran.r-project.org/bin/windows/base/) から最新のインストーラーをダウンロード・実行する。
+
+### Rtools（最重要）
+Windows でパッケージをソースからビルドするために必須。これがないとパッケージが入らないことがある。
+
+1.  [Rtools Download](https://cran.r-project.org/bin/windows/Rtools/) から、R のバージョンに合うもの（例: Rtools44）をダウンロード。
+2.  インストール時のオプションで **"Add rtools to system PATH"** に必ずチェックを入れる。
+
+## VS Code & Quarto の導入
+
+### VS Code 本体と拡張機能
+1.  [VS Code 公式](https://code.visualstudio.com/) からインストール。
+2.  左側の「拡張機能 (Extensions)」から以下をインストール。
+    * **Japanese Language Pack**: 日本語化。
+    * **Quarto**: 執筆・プレビュー用。
+    * **R** (Publisher: REditorSupport): コード補完・実行用。
+    * **Markdown Preview Mermaid Support**: フローチャート用。
+    * **Git Graph**: コミット履歴の可視化。
+
+### Quarto CLI (Command Line Interface)
+1.  [Quarto Get Started](https://quarto.org/docs/get-started/) から Windows 用 `.msi` をダウンロード・インストール。
+2.  **重要**: インストール後、パス反映のため **VS Code を再起動**する。
+
+## Git と GitHub のセットアップ
+
+### アカウントとインストール
+1.  [GitHub](https://github.com/) でアカウント作成（学生は大学メアド推奨）。
+2.  [Git for Windows](https://gitforwindows.org/) をインストール（デフォルト設定でOK）。
+
+### ユーザー設定と認証
+VS Code のターミナルで以下を実行。
+
+```bash
+git config --global user.name "Taro Tanaka"
+git config --global user.email "taro.tanaka@univ.ac.jp"
+```
+
+その後、VS Code の「ソース管理」アイコンから GitHub にサインインする。
+
+### GitHub Education (Copilot 無料化)
+博士課程学生は **GitHub Copilot** を無料で利用できる。
+* 1.  [GitHub Education](https://education.github.com/pack) から学生証をアップロードして申請。
+* 2.  承認後、VS Code に拡張機能 "GitHub Copilot" を入れ、サインインする。
+
+## 【重要】セキュリティ対策 (.gitignore)
+
+研究データ（特に PMS データや患者リスト）は、絶対に GitHub 上に公開してはならない。
+Git の管理対象から除外する設定ファイル `.gitignore` を必ず設定する。
+
+### .gitignore の設定手順
+プロジェクトフォルダの直下に `.gitignore` という名前のファイル（拡張子なし）を作成し、以下を記述する。
+
+```gitignore
+# R 関連のシステムファイル
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+
+# 【最重要】データファイル（これらは絶対にアップロードしない）
+*.csv
+*.xlsx
+*.xls
+*.rds
+*.rda
+*.tsv
+*.txt
+
+# 出力ファイル（PDFやキャッシュなど）
+*.pdf
+*.html
+*_files/
+*_cache/
+
+# 機密情報（APIキーなど）
+.env
+```
+
+::: {.callout-warning title="セキュリティ警告"}
+上記の `.gitignore` を設定していても、手動で `git add -f` をすれば強制的に追加できてしまう。
+コミットする前には必ず **「個人情報が含まれるファイルが含まれていないか」** を Git Graph 等で確認する習慣をつけること。
+万が一アップロードしてしまった場合は、リポジトリごと削除して作り直すのが最も安全である。
+:::
+
+## VS Code の最適化設定 (settings.json)
+
+R をスムーズに動かすための設定。`Ctrl + ,` → 右上のアイコン（JSONを開く）で以下を追記する。
+
+```json
+{
+    "r.rpath.windows": "C:\\Program Files\\R\\R-4.4.2\\bin\\x64\\R.exe",
+    "r.plot.view": "httpgd",
+    "editor.bracketPairColorization.enabled": true,
+    "r.alwaysUseActiveTerminal": true,
+    "r.sessionWatcher": true
+}
+```
+※ `httpgd` を使う場合は `install.packages("httpgd")` が必要。
+
+## 文書の出力 (Word, PDF, HTML)
+
+Quarto は、1つの `.qmd` ファイルから多様な形式に出力できる。
+
+### 準備：PDF エンジンのインストール
+PDF 出力には LaTeX 環境が必要だが、Quarto 専用の軽量版 `TinyTeX` を使うのが最も簡単である。
+ターミナルで以下を1回実行する。
+
+```bash
+quarto install tinytex
+```
+
+### 出力形式の指定 (YAMLヘッダー)
+`.qmd` ファイル冒頭を以下のように記述することで、形式を切り替えられる。
+
+```yaml
+---
+title: "研究計画書"
+format:
+  html:
+    toc: true       # 普段のプレビュー用
+  docx:
+    toc: true       # 指導教官への提出用（Word）
+  pdf:
+    documentclass: scrartcl # PDF出力用
+---
+```
+
+### 出力実行 (Render)
+1.  **コマンドパレット**: `Ctrl + Shift + P` → `Quarto: Render` を選択。
+2.  **形式選択**: `docx`, `pdf`, `html` から選択する。
+3.  数秒〜数十秒でファイルが生成され、自動で開かれる。
+
+# トラブルシューティング
+
+## Mermaid 関連
+### Mermaid の図が表示されない
+* VS Code は記法に厳格である。
+  * バッククォート ` ``` ` は必ず左端に寄せる（インデント禁止）。
+  * `%%{init: ...}%%` 内は必ずダブルクォート `"` を使う。
+  * YAMLヘッダーのcssオプションが悪さをしている場合があるので、コメントアウトして動作確認する。
+  * 中黒（・）や全角スペースが混入していないか確認する。
+
+### Mermaid 図をクリックで拡大したい
+**Lightbox 拡張機能**をインストールし、YAMLヘッダーに以下を追加する。
+```yaml
+format:   
+  html:
+    lightbox: true
+```
+
+## パッケージが見つからない (not available)
+開発版 R (x.x.0) を使用時、CRAN にバイナリがない場合がある。
+`remotes` パッケージを使い GitHub からインストールする。
+
+```{r}
+#| eval: false
+install.packages("remotes")
+remotes::install_github("nx10/httpgd")
+```
+
+---
+**本マニュアルを遵守し、安全かつ効率的な研究ライフを。**
+

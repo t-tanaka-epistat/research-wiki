@@ -371,7 +371,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-workflow-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div>
-<pre class="mermaid mermaid-js" data-label="fig-workflow">flowchart LR
+<pre class="mermaid mermaid-js" data-label="fig-workflow">flowchart TB
 subgraph Exploration["The Radar (探索)"]
     direction TB
     idea(Research Idea) --&gt; search["AI Search&lt;br/&gt;Consensus/Elicit"]
@@ -752,8 +752,8 @@ Tip
 <div>
 <p></p><figure class="figure"><p></p>
 <div>
-<pre class="mermaid mermaid-js">flowchart LR
-    RQ[Research Question] --&gt; AI{Choose Tool}
+<pre class="mermaid mermaid-js">flowchart TB
+  RQ[Research Question] --&gt; AI{Choose Tool}
     AI -- "General Consensus" --&gt; Consensus
     AI -- "Deep Dive / Matrix" --&gt; Elicit
     AI -- "Concept Structure" --&gt; Mapify

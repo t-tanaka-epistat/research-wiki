@@ -61,7 +61,7 @@ format:
 %%| fig-format: svg
 %%| lightbox: true
 
-flowchart LR
+flowchart TB
 subgraph Exploration["The Radar (探索)"]
     direction TB
     idea(Research Idea) --> search["AI Search<br/>Consensus/Elicit"]
@@ -267,8 +267,8 @@ Mapifyの出力は動的であるため、以下の2通りの方法で Notion �
 
 ```{mermaid}
 %%| fig-format: svg
-flowchart LR
-    RQ[Research Question] --> AI{Choose Tool}
+flowchart TB
+  RQ[Research Question] --> AI{Choose Tool}
     AI -- "General Consensus" --> Consensus
     AI -- "Deep Dive / Matrix" --> Elicit
     AI -- "Concept Structure" --> Mapify

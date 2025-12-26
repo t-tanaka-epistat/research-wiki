@@ -218,6 +218,67 @@ NotionにMarkdownを貼り付ける際は、**必ず「コードブロック」*
 Notionの通常テキストとして貼り付けると、勝手に整形（リスト化や太字化）され、VSCode (.qmd) に戻す際にフォーマット崩れや不要な改行が発生するため。「純粋なテキストデータ」として保存・運搬するためにコードブロックが最適である。
 :::
 
+# AI Search & Visualization: エビデンス探索の実装
+
+「気まぐれな検索」を廃止し、**Consensus / Elicit / Mapify** を用いた体系的なエビデンス収集フローを定義する。
+これらのツールで得られた知見は、ブラウザのタブで終わらせず、必ず **Notion** に資産として蓄積する。
+
+## Consensus & Elicit (AI Search)
+従来のようなキーワード検索ではなく、「リサーチクエスチョン (RQ)」を直接問いかける。
+
+### 使い分け
+* **Consensus:** 「Yes/No」で答えられる疑問や、一般的な科学的合意を知りたい時。
+    * *Prompt例:* "Does statin use increase the risk of diabetes in elderly patients?"
+* **Elicit:** 特定のトピックについて、複数の論文から表形式（Matrix）で詳細を抽出したい時。
+    * *Prompt例:* "Find papers regarding TTE implementation in oncology PMS data."
+
+### 出力結果の保管 (Notion Workflow)
+検索結果を流してしまわないために、Notionに **"Evidence Search Log"** データベースを作成し、以下のルールで記録する。
+
+**DBプロパティ構成案:**
+
+| プロパティ名 | 種類 | 用途 |
+| :--- | :--- | :--- |
+| **Query / Topic** | Title | 検索した質問文 (RQ) |
+| **AI Tool** | Select | `Consensus`, `Elicit`, `Perplexity` |
+| **Synthesis** | Text | **AIが出力した「まとめ（Synthesize）」** をコピペする。 |
+| **Result URL** | URL | 検索結果ページ自体の共有リンク。 |
+| **Key Papers** | Text | 特に重要だった論文のタイトル（Paperpileへ登録済みのもの）。 |
+| **Related Study** | Relation | `Study Portfolio DB` と紐付け。 |
+
+::: {.callout-note title="Elicitの活用テクニック"}
+Elicitで作成した論文リスト（Table）は `.bib` 形式でエクスポートできる。これをPaperpileにインポートすれば、検索から文献管理への移行がシームレスに完了する。
+:::
+
+## Mapify (Visualization)
+複雑な概念や、Consensus/Elicitで得られた大量の情報を「一枚の地図（マインドマップ）」に変換し、直感的な理解を促す。
+
+### 使用シーン
+* **新規領域の全体像把握:** "Overview of Causal Inference methods in epidemiology" などをマップ化。
+* **長文PDFの構造化:** 難解なプロトコルやガイドラインをアップロードし、要点を可視化する。
+
+### 出力結果の保管
+Mapifyの出力は動的であるため、以下の2通りの方法で Notion の **Study Portfolio (各研究ページ)** の「Ideation & Draft Logs」セクションに保存する。
+
+1.  **Embed (埋め込み):** Mapifyの共有リンクを発行し、Notionに `/embed` で埋め込む（操作可能な状態で保存）。
+2.  **Image:** 画像 (.png) としてエクスポートし、Notionに貼り付ける（視認性重視）。
+
+## エビデンス探索の全体フロー (再掲)
+
+```{mermaid}
+%%| fig-format: svg
+flowchart LR
+    RQ[Research Question] --> AI{Choose Tool}
+    AI -- "General Consensus" --> Consensus
+    AI -- "Deep Dive / Matrix" --> Elicit
+    AI -- "Concept Structure" --> Mapify
+    
+    Consensus -->|Summary Text| Notion[(Notion<br/>Search Log DB)]
+    Elicit -->|BibTeX| Paperpile[(Paperpile)]
+    Elicit -->|Summary Text| Notion
+    Mapify -->|Embed/Image| Notion
+```
+
 # Paperpile × Notion: 究極の文献管理
 「積読」を防ぎ、iPadでの快適な読書を実現するためのハイブリッド運用。
 

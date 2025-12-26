@@ -181,11 +181,13 @@ Gemini/ChatGPTとの対話で生まれたアイディアやプロトコル案を
 各Studyのページ内には、以下のセクションを設ける。
 
 * **Study X: [研究タイトル]**
-  * Status: Protocol Drafting
+  * Status: `Protocol Drafting`
   * Research Question: ...
-  * GitHub Repo: Link
----
-**💡 Ideation & Draft Logs (思考の履歴) Geminiとの壁打ち結果をここに時系列で保存する**
+  * GitHub Repo: `Link`
+  
+::: {.callout-tip title="Gemini/ChatGPTとの対話履歴保存場所"} 
+Ideation & Draft Logs (思考の履歴) Geminiとの壁打ち結果をここに時系列で保存する
+:::
 
 * ▶ **2025-XX-XX: Ver 0.1 - Initial Concept (トグル)**
 

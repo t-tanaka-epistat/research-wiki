@@ -206,52 +206,72 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#phd-research-dashboard-研究ホーム-の階層構造" id="toc-phd-research-dashboard-研究ホーム-の階層構造" class="nav-link" data-scroll-target="#phd-research-dashboard-研究ホーム-の階層構造"><span class="header-section-number">4.2</span> PhD Research Dashboard (研究ホーム) の階層構造</a></li>
   <li><a href="#draft-log-workflow-aiとの壁打ち管理法" id="toc-draft-log-workflow-aiとの壁打ち管理法" class="nav-link" data-scroll-target="#draft-log-workflow-aiとの壁打ち管理法"><span class="header-section-number">4.3</span> “Draft Log” Workflow: AIとの壁打ち管理法</a></li>
   </ul></li>
-  <li><a href="#paperpile-notion-究極の文献管理" id="toc-paperpile-notion-究極の文献管理" class="nav-link" data-scroll-target="#paperpile-notion-究極の文献管理"><span class="header-section-number">5</span> Paperpile × Notion: 究極の文献管理</a></li>
-  <li><a href="#chatgpt-notion-俺の統計wiki構築" id="toc-chatgpt-notion-俺の統計wiki構築" class="nav-link" data-scroll-target="#chatgpt-notion-俺の統計wiki構築"><span class="header-section-number">6</span> ChatGPT × Notion: 「俺の統計Wiki」構築</a>
+  <li><a href="#ai-search-visualization-エビデンス探索の実装" id="toc-ai-search-visualization-エビデンス探索の実装" class="nav-link" data-scroll-target="#ai-search-visualization-エビデンス探索の実装"><span class="header-section-number">5</span> AI Search &amp; Visualization: エビデンス探索の実装</a>
   <ul class="collapse">
-  <li><a href="#導入方法" id="toc-導入方法" class="nav-link" data-scroll-target="#導入方法"><span class="header-section-number">6.1</span> 導入方法</a></li>
+  <li><a href="#consensus-elicit-ai-search" id="toc-consensus-elicit-ai-search" class="nav-link" data-scroll-target="#consensus-elicit-ai-search"><span class="header-section-number">5.1</span> Consensus &amp; Elicit (AI Search)</a>
+  <ul class="collapse">
+  <li><a href="#使い分け" id="toc-使い分け" class="nav-link" data-scroll-target="#使い分け"><span class="header-section-number">5.1.1</span> 使い分け</a></li>
+  <li><a href="#出力結果の保管-notion-workflow" id="toc-出力結果の保管-notion-workflow" class="nav-link" data-scroll-target="#出力結果の保管-notion-workflow"><span class="header-section-number">5.1.2</span> 出力結果の保管 (Notion Workflow)</a></li>
   </ul></li>
-  <li><a href="#vscode-quarto-再現性のある解析環境" id="toc-vscode-quarto-再現性のある解析環境" class="nav-link" data-scroll-target="#vscode-quarto-再現性のある解析環境"><span class="header-section-number">7</span> VSCode × Quarto: 再現性のある解析環境</a>
+  <li><a href="#mapify-visualization" id="toc-mapify-visualization" class="nav-link" data-scroll-target="#mapify-visualization"><span class="header-section-number">5.2</span> Mapify (Visualization)</a>
   <ul class="collapse">
-  <li><a href="#ディレクトリ構成-standard-layout" id="toc-ディレクトリ構成-standard-layout" class="nav-link" data-scroll-target="#ディレクトリ構成-standard-layout"><span class="header-section-number">7.1</span> ディレクトリ構成 (Standard Layout)</a></li>
-  <li><a href="#vs-code-を推奨する3つの理由" id="toc-vs-code-を推奨する3つの理由" class="nav-link" data-scroll-target="#vs-code-を推奨する3つの理由"><span class="header-section-number">7.2</span> VS Code を推奨する3つの理由</a></li>
-  <li><a href="#デメリットとピットフォール共有時の注意点" id="toc-デメリットとピットフォール共有時の注意点" class="nav-link" data-scroll-target="#デメリットとピットフォール共有時の注意点"><span class="header-section-number">7.3</span> デメリットとピットフォール（共有時の注意点）</a></li>
-  <li><a href="#基礎環境のインストール-r-rtools" id="toc-基礎環境のインストール-r-rtools" class="nav-link" data-scroll-target="#基礎環境のインストール-r-rtools"><span class="header-section-number">7.4</span> 基礎環境のインストール (R &amp; Rtools)</a>
-  <ul class="collapse">
-  <li><a href="#r-本体" id="toc-r-本体" class="nav-link" data-scroll-target="#r-本体"><span class="header-section-number">7.4.1</span> R 本体</a></li>
-  <li><a href="#rtools最重要" id="toc-rtools最重要" class="nav-link" data-scroll-target="#rtools最重要"><span class="header-section-number">7.4.2</span> Rtools（最重要）</a></li>
+  <li><a href="#使用シーン" id="toc-使用シーン" class="nav-link" data-scroll-target="#使用シーン"><span class="header-section-number">5.2.1</span> 使用シーン</a></li>
+  <li><a href="#出力結果の保管" id="toc-出力結果の保管" class="nav-link" data-scroll-target="#出力結果の保管"><span class="header-section-number">5.2.2</span> 出力結果の保管</a></li>
   </ul></li>
-  <li><a href="#vs-code-quarto-の導入" id="toc-vs-code-quarto-の導入" class="nav-link" data-scroll-target="#vs-code-quarto-の導入"><span class="header-section-number">7.5</span> VS Code &amp; Quarto の導入</a>
-  <ul class="collapse">
-  <li><a href="#vs-code-本体と拡張機能" id="toc-vs-code-本体と拡張機能" class="nav-link" data-scroll-target="#vs-code-本体と拡張機能"><span class="header-section-number">7.5.1</span> VS Code 本体と拡張機能</a></li>
-  <li><a href="#quarto-cli-command-line-interface" id="toc-quarto-cli-command-line-interface" class="nav-link" data-scroll-target="#quarto-cli-command-line-interface"><span class="header-section-number">7.5.2</span> Quarto CLI (Command Line Interface)</a></li>
+  <li><a href="#エビデンス探索の全体フロー-再掲" id="toc-エビデンス探索の全体フロー-再掲" class="nav-link" data-scroll-target="#エビデンス探索の全体フロー-再掲"><span class="header-section-number">5.3</span> エビデンス探索の全体フロー (再掲)</a></li>
   </ul></li>
-  <li><a href="#git-と-github-のセットアップ" id="toc-git-と-github-のセットアップ" class="nav-link" data-scroll-target="#git-と-github-のセットアップ"><span class="header-section-number">7.6</span> Git と GitHub のセットアップ</a>
+  <li><a href="#paperpile-notion-究極の文献管理" id="toc-paperpile-notion-究極の文献管理" class="nav-link" data-scroll-target="#paperpile-notion-究極の文献管理"><span class="header-section-number">6</span> Paperpile × Notion: 究極の文献管理</a></li>
+  <li><a href="#chatgpt-notion-俺の統計wiki構築" id="toc-chatgpt-notion-俺の統計wiki構築" class="nav-link" data-scroll-target="#chatgpt-notion-俺の統計wiki構築"><span class="header-section-number">7</span> ChatGPT × Notion: 「俺の統計Wiki」構築</a>
   <ul class="collapse">
-  <li><a href="#アカウントとインストール" id="toc-アカウントとインストール" class="nav-link" data-scroll-target="#アカウントとインストール"><span class="header-section-number">7.6.1</span> アカウントとインストール</a></li>
-  <li><a href="#ユーザー設定と認証" id="toc-ユーザー設定と認証" class="nav-link" data-scroll-target="#ユーザー設定と認証"><span class="header-section-number">7.6.2</span> ユーザー設定と認証</a></li>
-  <li><a href="#github-education-copilot-無料化" id="toc-github-education-copilot-無料化" class="nav-link" data-scroll-target="#github-education-copilot-無料化"><span class="header-section-number">7.6.3</span> GitHub Education (Copilot 無料化)</a></li>
+  <li><a href="#導入方法" id="toc-導入方法" class="nav-link" data-scroll-target="#導入方法"><span class="header-section-number">7.1</span> 導入方法</a></li>
   </ul></li>
-  <li><a href="#重要セキュリティ対策-.gitignore" id="toc-重要セキュリティ対策-.gitignore" class="nav-link" data-scroll-target="#重要セキュリティ対策-.gitignore"><span class="header-section-number">7.7</span> 【重要】セキュリティ対策 (.gitignore)</a>
+  <li><a href="#vscode-quarto-再現性のある解析環境" id="toc-vscode-quarto-再現性のある解析環境" class="nav-link" data-scroll-target="#vscode-quarto-再現性のある解析環境"><span class="header-section-number">8</span> VSCode × Quarto: 再現性のある解析環境</a>
   <ul class="collapse">
-  <li><a href="#gitignore-の設定手順" id="toc-gitignore-の設定手順" class="nav-link" data-scroll-target="#gitignore-の設定手順"><span class="header-section-number">7.7.1</span> .gitignore の設定手順</a></li>
-  </ul></li>
-  <li><a href="#vs-code-の最適化設定-settings.json" id="toc-vs-code-の最適化設定-settings.json" class="nav-link" data-scroll-target="#vs-code-の最適化設定-settings.json"><span class="header-section-number">7.8</span> VS Code の最適化設定 (settings.json)</a></li>
-  <li><a href="#文書の出力-word-pdf-html" id="toc-文書の出力-word-pdf-html" class="nav-link" data-scroll-target="#文書の出力-word-pdf-html"><span class="header-section-number">7.9</span> 文書の出力 (Word, PDF, HTML)</a>
+  <li><a href="#ディレクトリ構成-standard-layout" id="toc-ディレクトリ構成-standard-layout" class="nav-link" data-scroll-target="#ディレクトリ構成-standard-layout"><span class="header-section-number">8.1</span> ディレクトリ構成 (Standard Layout)</a></li>
+  <li><a href="#vs-code-を推奨する3つの理由" id="toc-vs-code-を推奨する3つの理由" class="nav-link" data-scroll-target="#vs-code-を推奨する3つの理由"><span class="header-section-number">8.2</span> VS Code を推奨する3つの理由</a></li>
+  <li><a href="#デメリットとピットフォール共有時の注意点" id="toc-デメリットとピットフォール共有時の注意点" class="nav-link" data-scroll-target="#デメリットとピットフォール共有時の注意点"><span class="header-section-number">8.3</span> デメリットとピットフォール（共有時の注意点）</a></li>
+  <li><a href="#基礎環境のインストール-r-rtools" id="toc-基礎環境のインストール-r-rtools" class="nav-link" data-scroll-target="#基礎環境のインストール-r-rtools"><span class="header-section-number">8.4</span> 基礎環境のインストール (R &amp; Rtools)</a>
   <ul class="collapse">
-  <li><a href="#準備pdf-エンジンのインストール" id="toc-準備pdf-エンジンのインストール" class="nav-link" data-scroll-target="#準備pdf-エンジンのインストール"><span class="header-section-number">7.9.1</span> 準備：PDF エンジンのインストール</a></li>
-  <li><a href="#出力形式の指定-yamlヘッダー" id="toc-出力形式の指定-yamlヘッダー" class="nav-link" data-scroll-target="#出力形式の指定-yamlヘッダー"><span class="header-section-number">7.9.2</span> 出力形式の指定 (YAMLヘッダー)</a></li>
-  <li><a href="#出力実行-render" id="toc-出力実行-render" class="nav-link" data-scroll-target="#出力実行-render"><span class="header-section-number">7.9.3</span> 出力実行 (Render)</a></li>
+  <li><a href="#r-本体" id="toc-r-本体" class="nav-link" data-scroll-target="#r-本体"><span class="header-section-number">8.4.1</span> R 本体</a></li>
+  <li><a href="#rtools最重要" id="toc-rtools最重要" class="nav-link" data-scroll-target="#rtools最重要"><span class="header-section-number">8.4.2</span> Rtools（最重要）</a></li>
   </ul></li>
-  </ul></li>
-  <li><a href="#トラブルシューティング" id="toc-トラブルシューティング" class="nav-link" data-scroll-target="#トラブルシューティング"><span class="header-section-number">8</span> トラブルシューティング</a>
+  <li><a href="#vs-code-quarto-の導入" id="toc-vs-code-quarto-の導入" class="nav-link" data-scroll-target="#vs-code-quarto-の導入"><span class="header-section-number">8.5</span> VS Code &amp; Quarto の導入</a>
   <ul class="collapse">
-  <li><a href="#mermaid-関連" id="toc-mermaid-関連" class="nav-link" data-scroll-target="#mermaid-関連"><span class="header-section-number">8.1</span> Mermaid 関連</a>
-  <ul class="collapse">
-  <li><a href="#mermaid-の図が表示されない" id="toc-mermaid-の図が表示されない" class="nav-link" data-scroll-target="#mermaid-の図が表示されない"><span class="header-section-number">8.1.1</span> Mermaid の図が表示されない</a></li>
-  <li><a href="#mermaid-図をクリックで拡大したい" id="toc-mermaid-図をクリックで拡大したい" class="nav-link" data-scroll-target="#mermaid-図をクリックで拡大したい"><span class="header-section-number">8.1.2</span> Mermaid 図をクリックで拡大したい</a></li>
+  <li><a href="#vs-code-本体と拡張機能" id="toc-vs-code-本体と拡張機能" class="nav-link" data-scroll-target="#vs-code-本体と拡張機能"><span class="header-section-number">8.5.1</span> VS Code 本体と拡張機能</a></li>
+  <li><a href="#quarto-cli-command-line-interface" id="toc-quarto-cli-command-line-interface" class="nav-link" data-scroll-target="#quarto-cli-command-line-interface"><span class="header-section-number">8.5.2</span> Quarto CLI (Command Line Interface)</a></li>
   </ul></li>
-  <li><a href="#パッケージが見つからない-not-available" id="toc-パッケージが見つからない-not-available" class="nav-link" data-scroll-target="#パッケージが見つからない-not-available"><span class="header-section-number">8.2</span> パッケージが見つからない (not available)</a></li>
+  <li><a href="#git-と-github-のセットアップ" id="toc-git-と-github-のセットアップ" class="nav-link" data-scroll-target="#git-と-github-のセットアップ"><span class="header-section-number">8.6</span> Git と GitHub のセットアップ</a>
+  <ul class="collapse">
+  <li><a href="#アカウントとインストール" id="toc-アカウントとインストール" class="nav-link" data-scroll-target="#アカウントとインストール"><span class="header-section-number">8.6.1</span> アカウントとインストール</a></li>
+  <li><a href="#ユーザー設定と認証" id="toc-ユーザー設定と認証" class="nav-link" data-scroll-target="#ユーザー設定と認証"><span class="header-section-number">8.6.2</span> ユーザー設定と認証</a></li>
+  <li><a href="#github-education-copilot-無料化" id="toc-github-education-copilot-無料化" class="nav-link" data-scroll-target="#github-education-copilot-無料化"><span class="header-section-number">8.6.3</span> GitHub Education (Copilot 無料化)</a></li>
+  </ul></li>
+  <li><a href="#重要セキュリティ対策-.gitignore" id="toc-重要セキュリティ対策-.gitignore" class="nav-link" data-scroll-target="#重要セキュリティ対策-.gitignore"><span class="header-section-number">8.7</span> 【重要】セキュリティ対策 (.gitignore)</a>
+  <ul class="collapse">
+  <li><a href="#gitignore-の設定手順" id="toc-gitignore-の設定手順" class="nav-link" data-scroll-target="#gitignore-の設定手順"><span class="header-section-number">8.7.1</span> .gitignore の設定手順</a></li>
+  </ul></li>
+  <li><a href="#vs-code-の最適化設定-settings.json" id="toc-vs-code-の最適化設定-settings.json" class="nav-link" data-scroll-target="#vs-code-の最適化設定-settings.json"><span class="header-section-number">8.8</span> VS Code の最適化設定 (settings.json)</a></li>
+  <li><a href="#文書の出力-word-pdf-html" id="toc-文書の出力-word-pdf-html" class="nav-link" data-scroll-target="#文書の出力-word-pdf-html"><span class="header-section-number">8.9</span> 文書の出力 (Word, PDF, HTML)</a>
+  <ul class="collapse">
+  <li><a href="#準備pdf-エンジンのインストール" id="toc-準備pdf-エンジンのインストール" class="nav-link" data-scroll-target="#準備pdf-エンジンのインストール"><span class="header-section-number">8.9.1</span> 準備：PDF エンジンのインストール</a></li>
+  <li><a href="#出力形式の指定-yamlヘッダー" id="toc-出力形式の指定-yamlヘッダー" class="nav-link" data-scroll-target="#出力形式の指定-yamlヘッダー"><span class="header-section-number">8.9.2</span> 出力形式の指定 (YAMLヘッダー)</a></li>
+  <li><a href="#出力実行-render" id="toc-出力実行-render" class="nav-link" data-scroll-target="#出力実行-render"><span class="header-section-number">8.9.3</span> 出力実行 (Render)</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#トラブルシューティング" id="toc-トラブルシューティング" class="nav-link" data-scroll-target="#トラブルシューティング"><span class="header-section-number">9</span> トラブルシューティング</a>
+  <ul class="collapse">
+  <li><a href="#mermaid-関連" id="toc-mermaid-関連" class="nav-link" data-scroll-target="#mermaid-関連"><span class="header-section-number">9.1</span> Mermaid 関連</a>
+  <ul class="collapse">
+  <li><a href="#mermaid-の図が表示されない" id="toc-mermaid-の図が表示されない" class="nav-link" data-scroll-target="#mermaid-の図が表示されない"><span class="header-section-number">9.1.1</span> Mermaid の図が表示されない</a></li>
+  <li><a href="#mermaid-図をクリックで拡大したい" id="toc-mermaid-図をクリックで拡大したい" class="nav-link" data-scroll-target="#mermaid-図をクリックで拡大したい"><span class="header-section-number">9.1.2</span> Mermaid 図をクリックで拡大したい</a></li>
+  </ul></li>
+  <li><a href="#パッケージが見つからない-not-available" id="toc-パッケージが見つからない-not-available" class="nav-link" data-scroll-target="#パッケージが見つからない-not-available"><span class="header-section-number">9.2</span> パッケージが見つからない (not available)</a></li>
+  </ul></li>
+  <li><a href="#appendix-github-pages-deployment" id="toc-appendix-github-pages-deployment" class="nav-link" data-scroll-target="#appendix-github-pages-deployment"><span class="header-section-number">10</span> Appendix: GitHub Pages Deployment</a>
+  <ul class="collapse">
+  <li><a href="#準備-best-practice" id="toc-準備-best-practice" class="nav-link" data-scroll-target="#準備-best-practice"><span class="header-section-number">10.1</span> 準備 (Best Practice)</a></li>
+  <li><a href="#github設定" id="toc-github設定" class="nav-link" data-scroll-target="#github設定"><span class="header-section-number">10.2</span> GitHub設定</a></li>
+  <li><a href="#アクセスと共有" id="toc-アクセスと共有" class="nav-link" data-scroll-target="#アクセスと共有"><span class="header-section-number">10.3</span> アクセスと共有</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -351,7 +371,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-workflow-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div>
-<pre class="mermaid mermaid-js" data-label="fig-workflow">flowchart LR
+<pre class="mermaid mermaid-js" data-label="fig-workflow">flowchart TB
 subgraph Exploration["The Radar (探索)"]
     direction TB
     idea(Research Idea) --&gt; search["AI Search&lt;br/&gt;Consensus/Elicit"]
@@ -561,13 +581,27 @@ Tip
 <p>Gemini/ChatGPTとの対話で生まれたアイディアやプロトコル案を、「Study Page」 内でどのように管理するか。バージョン管理システム (Git) に移行する前の「砂場」としての運用ルール。</p>
 <p><strong>Study Page Template (詳細ページの中身)</strong> 各Studyのページ内には、以下のセクションを設ける。</p>
 <ul>
-<li><p><strong>Study X: [研究タイトル]</strong></p>
+<li><strong>Study X: [研究タイトル]</strong>
 <ul>
-<li>Status: Protocol Drafting</li>
+<li>Status: <code>Protocol Drafting</code></li>
 <li>Research Question: …</li>
-<li><h2 id="github-repo-link" data-number="4.4" class="anchored"><span class="header-section-number">4.4</span> GitHub Repo: Link</h2>
-<strong>💡 Ideation &amp; Draft Logs (思考の履歴) Geminiとの壁打ち結果をここに時系列で保存する</strong></li>
+<li>GitHub Repo: <code>Link</code></li>
 </ul></li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled" title="Gemini/ChatGPTとの対話履歴保存場所">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Gemini/ChatGPTとの対話履歴保存場所
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Ideation &amp; Draft Logs (思考の履歴) Geminiとの壁打ち結果をここに時系列で保存する</p>
+</div>
+</div>
+<ul>
 <li><p>▶ <strong>2025-XX-XX: Ver 0.1 - Initial Concept (トグル)</strong></p></li>
 <li><p>▶ <strong>2025-XX-XX: Ver 0.2 - With PS Matching (トグル)</strong></p>
 <ul>
@@ -608,8 +642,136 @@ Tip
 </div>
 </section>
 </section>
-<section id="paperpile-notion-究極の文献管理" class="level1" data-number="5">
-<h1 data-number="5"><span class="header-section-number">5</span> Paperpile × Notion: 究極の文献管理</h1>
+<section id="ai-search-visualization-エビデンス探索の実装" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> AI Search &amp; Visualization: エビデンス探索の実装</h1>
+<p>「気まぐれな検索」を廃止し、<strong>Consensus / Elicit / Mapify</strong> を用いた体系的なエビデンス収集フローを定義する。 これらのツールで得られた知見は、ブラウザのタブで終わらせず、必ず <strong>Notion</strong> に資産として蓄積する。</p>
+<section id="consensus-elicit-ai-search" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="consensus-elicit-ai-search"><span class="header-section-number">5.1</span> Consensus &amp; Elicit (AI Search)</h2>
+<p>従来のようなキーワード検索ではなく、「リサーチクエスチョン (RQ)」を直接問いかける。</p>
+<section id="使い分け" class="level3" data-number="5.1.1">
+<h3 data-number="5.1.1" class="anchored" data-anchor-id="使い分け"><span class="header-section-number">5.1.1</span> 使い分け</h3>
+<ul>
+<li><strong>Consensus:</strong> 「Yes/No」で答えられる疑問や、一般的な科学的合意を知りたい時。
+<ul>
+<li><em>Prompt例:</em> “Does statin use increase the risk of diabetes in elderly patients?”</li>
+</ul></li>
+<li><strong>Elicit:</strong> 特定のトピックについて、複数の論文から表形式（Matrix）で詳細を抽出したい時。
+<ul>
+<li><em>Prompt例:</em> “Find papers regarding TTE implementation in oncology PMS data.”</li>
+</ul></li>
+</ul>
+</section>
+<section id="出力結果の保管-notion-workflow" class="level3" data-number="5.1.2">
+<h3 data-number="5.1.2" class="anchored" data-anchor-id="出力結果の保管-notion-workflow"><span class="header-section-number">5.1.2</span> 出力結果の保管 (Notion Workflow)</h3>
+<p>検索結果を流してしまわないために、Notionに <strong>“Evidence Search Log”</strong> データベースを作成し、以下のルールで記録する。</p>
+<p><strong>DBプロパティ構成案:</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">プロパティ名</th>
+<th style="text-align: left;">種類</th>
+<th style="text-align: left;">用途</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Query / Topic</strong></td>
+<td style="text-align: left;">Title</td>
+<td style="text-align: left;">検索した質問文 (RQ)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>AI Tool</strong></td>
+<td style="text-align: left;">Select</td>
+<td style="text-align: left;"><code>Consensus</code>, <code>Elicit</code>, <code>Perplexity</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Synthesis</strong></td>
+<td style="text-align: left;">Text</td>
+<td style="text-align: left;"><strong>AIが出力した「まとめ（Synthesize）」</strong> をコピペする。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Result URL</strong></td>
+<td style="text-align: left;">URL</td>
+<td style="text-align: left;">検索結果ページ自体の共有リンク。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Key Papers</strong></td>
+<td style="text-align: left;">Text</td>
+<td style="text-align: left;">特に重要だった論文のタイトル（Paperpileへ登録済みのもの）。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Related Study</strong></td>
+<td style="text-align: left;">Relation</td>
+<td style="text-align: left;"><code>Study Portfolio DB</code> と紐付け。</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-note callout-titled" title="Elicitの活用テクニック">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Elicitの活用テクニック
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Elicitで作成した論文リスト（Table）は <code>.bib</code> 形式でエクスポートできる。これをPaperpileにインポートすれば、検索から文献管理への移行がシームレスに完了する。</p>
+</div>
+</div>
+</section>
+</section>
+<section id="mapify-visualization" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="mapify-visualization"><span class="header-section-number">5.2</span> Mapify (Visualization)</h2>
+<p>複雑な概念や、Consensus/Elicitで得られた大量の情報を「一枚の地図（マインドマップ）」に変換し、直感的な理解を促す。</p>
+<section id="使用シーン" class="level3" data-number="5.2.1">
+<h3 data-number="5.2.1" class="anchored" data-anchor-id="使用シーン"><span class="header-section-number">5.2.1</span> 使用シーン</h3>
+<ul>
+<li><strong>新規領域の全体像把握:</strong> “Overview of Causal Inference methods in epidemiology” などをマップ化。</li>
+<li><strong>長文PDFの構造化:</strong> 難解なプロトコルやガイドラインをアップロードし、要点を可視化する。</li>
+</ul>
+</section>
+<section id="出力結果の保管" class="level3" data-number="5.2.2">
+<h3 data-number="5.2.2" class="anchored" data-anchor-id="出力結果の保管"><span class="header-section-number">5.2.2</span> 出力結果の保管</h3>
+<p>Mapifyの出力は動的であるため、以下の2通りの方法で Notion の <strong>Study Portfolio (各研究ページ)</strong> の「Ideation &amp; Draft Logs」セクションに保存する。</p>
+<ol type="1">
+<li><strong>Embed (埋め込み):</strong> Mapifyの共有リンクを発行し、Notionに <code>/embed</code> で埋め込む（操作可能な状態で保存）。</li>
+<li><strong>Image:</strong> 画像 (.png) としてエクスポートし、Notionに貼り付ける（視認性重視）。</li>
+</ol>
+</section>
+</section>
+<section id="エビデンス探索の全体フロー-再掲" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="エビデンス探索の全体フロー-再掲"><span class="header-section-number">5.3</span> エビデンス探索の全体フロー (再掲)</h2>
+<div class="cell" data-fig-format="svg" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart TB
+  RQ[Research Question] --&gt; AI{Choose Tool}
+    AI -- "General Consensus" --&gt; Consensus
+    AI -- "Deep Dive / Matrix" --&gt; Elicit
+    AI -- "Concept Structure" --&gt; Mapify
+    
+    Consensus --&gt;|Summary Text| Notion[(Notion&lt;br/&gt;Search Log DB)]
+    Elicit --&gt;|BibTeX| Paperpile[(Paperpile)]
+    Elicit --&gt;|Summary Text| Notion
+    Mapify --&gt;|Embed/Image| Notion
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="paperpile-notion-究極の文献管理" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Paperpile × Notion: 究極の文献管理</h1>
 <p>「積読」を防ぎ、iPadでの快適な読書を実現するためのハイブリッド運用。</p>
 <p><strong>ラベル管理ルール (Paperpile)</strong> Paperpileのフォルダではなく「ラベル」を活用し、ステータスを可視化する。 記号を接頭辞にすることで、ソート順を固定する。</p>
 <ul>
@@ -641,8 +803,8 @@ Tip
 </ul></li>
 </ul>
 </section>
-<section id="chatgpt-notion-俺の統計wiki構築" class="level1" data-number="6">
-<h1 data-number="6"><span class="header-section-number">6</span> ChatGPT × Notion: 「俺の統計Wiki」構築</h1>
+<section id="chatgpt-notion-俺の統計wiki構築" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> ChatGPT × Notion: 「俺の統計Wiki」構築</h1>
 <p>AIとの壁打ち結果を、コピペの手間なくデータベース化する。</p>
 <ul>
 <li><strong>仕組み</strong> : ChatGPT (Custom GPTs) から Zapier AI Actions を経由してNotion APIを叩く。</li>
@@ -654,8 +816,8 @@ Tip
 <li>Notionのトグル機能等を使い、後でクイズとして復習する。</li>
 </ol></li>
 </ul>
-<section id="導入方法" class="level2" data-number="6.1">
-<h2 data-number="6.1" class="anchored" data-anchor-id="導入方法"><span class="header-section-number">6.1</span> 導入方法</h2>
+<section id="導入方法" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="導入方法"><span class="header-section-number">7.1</span> 導入方法</h2>
 <ol type="1">
 <li>Zapierアカウントを作成し、NotionとChatGPTを連携する。</li>
 <li>新しいZapを作成し、Triggerを「AI Action: ChatGPT」、Actionを「Notion: Create Database Item」に設定する。</li>
@@ -664,11 +826,11 @@ Tip
 </ol>
 </section>
 </section>
-<section id="vscode-quarto-再現性のある解析環境" class="level1" data-number="7">
-<h1 data-number="7"><span class="header-section-number">7</span> VSCode × Quarto: 再現性のある解析環境</h1>
+<section id="vscode-quarto-再現性のある解析環境" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> VSCode × Quarto: 再現性のある解析環境</h1>
 <p>長年 R ユーザーに愛されてきた RStudio から、Visual Studio Code (VS Code) へ移行する研究者が増えている。本マニュアルは、その環境構築手順と、<strong>研究データのセキュリティを守るための運用ルール</strong>をまとめたものである。WordやExcelを使わず、すべてをテキストベースで管理する。</p>
-<section id="ディレクトリ構成-standard-layout" class="level2" data-number="7.1">
-<h2 data-number="7.1" class="anchored" data-anchor-id="ディレクトリ構成-standard-layout"><span class="header-section-number">7.1</span> ディレクトリ構成 (Standard Layout)</h2>
+<section id="ディレクトリ構成-standard-layout" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="ディレクトリ構成-standard-layout"><span class="header-section-number">8.1</span> ディレクトリ構成 (Standard Layout)</h2>
 <p>Mono-repository構成を採用し、データとコードを厳格に分離する。</p>
 <div class="cell">
 <pre class="text cell-code"><code>PhD_Project_Root/
@@ -691,8 +853,8 @@ Tip
     └── VSCode_Quarto_R_Setup.qmd  # 本マニュアル</code></pre>
 </div>
 </section>
-<section id="vs-code-を推奨する3つの理由" class="level2" data-number="7.2">
-<h2 data-number="7.2" class="anchored" data-anchor-id="vs-code-を推奨する3つの理由"><span class="header-section-number">7.2</span> VS Code を推奨する3つの理由</h2>
+<section id="vs-code-を推奨する3つの理由" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="vs-code-を推奨する3つの理由"><span class="header-section-number">8.2</span> VS Code を推奨する3つの理由</h2>
 <ol type="1">
 <li><strong>AI支援（GitHub Copilot）との統合が最強</strong>
 <ul>
@@ -708,8 +870,8 @@ Tip
 </ul></li>
 </ol>
 </section>
-<section id="デメリットとピットフォール共有時の注意点" class="level2" data-number="7.3">
-<h2 data-number="7.3" class="anchored" data-anchor-id="デメリットとピットフォール共有時の注意点"><span class="header-section-number">7.3</span> デメリットとピットフォール（共有時の注意点）</h2>
+<section id="デメリットとピットフォール共有時の注意点" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="デメリットとピットフォール共有時の注意点"><span class="header-section-number">8.3</span> デメリットとピットフォール（共有時の注意点）</h2>
 <p>VS Code は強力だが、以下の点に注意が必要である。</p>
 <ul>
 <li><strong>初期設定の壁</strong>: RStudio ならインストールするだけで動くが、VS Code は「拡張機能」や「パス設定」が必要。本マニュアルの手順を遵守すること。</li>
@@ -717,17 +879,17 @@ Tip
 <li><strong>【最重要】データ漏洩リスク</strong>: GitHub 連携が簡単なため、<strong>「患者データ（PMSデータ等）を誤ってアップロードしてしまう」</strong>リスクがある。これを防ぐ <code>.gitignore</code> 設定は必須である（第5章参照）。</li>
 </ul>
 </section>
-<section id="基礎環境のインストール-r-rtools" class="level2" data-number="7.4">
-<h2 data-number="7.4" class="anchored" data-anchor-id="基礎環境のインストール-r-rtools"><span class="header-section-number">7.4</span> 基礎環境のインストール (R &amp; Rtools)</h2>
+<section id="基礎環境のインストール-r-rtools" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="基礎環境のインストール-r-rtools"><span class="header-section-number">8.4</span> 基礎環境のインストール (R &amp; Rtools)</h2>
 <p>統計解析のエンジンとなる R 言語環境を構築する。</p>
-<section id="r-本体" class="level3" data-number="7.4.1">
-<h3 data-number="7.4.1" class="anchored" data-anchor-id="r-本体"><span class="header-section-number">7.4.1</span> R 本体</h3>
+<section id="r-本体" class="level3" data-number="8.4.1">
+<h3 data-number="8.4.1" class="anchored" data-anchor-id="r-本体"><span class="header-section-number">8.4.1</span> R 本体</h3>
 <ol type="1">
 <li><a href="https://cran.r-project.org/bin/windows/base/">CRAN</a> から最新のインストーラーをダウンロード・実行する。</li>
 </ol>
 </section>
-<section id="rtools最重要" class="level3" data-number="7.4.2">
-<h3 data-number="7.4.2" class="anchored" data-anchor-id="rtools最重要"><span class="header-section-number">7.4.2</span> Rtools（最重要）</h3>
+<section id="rtools最重要" class="level3" data-number="8.4.2">
+<h3 data-number="8.4.2" class="anchored" data-anchor-id="rtools最重要"><span class="header-section-number">8.4.2</span> Rtools（最重要）</h3>
 <p>Windows でパッケージをソースからビルドするために必須。これがないとパッケージが入らないことがある。</p>
 <ol type="1">
 <li><a href="https://cran.r-project.org/bin/windows/Rtools/">Rtools Download</a> から、R のバージョンに合うもの（例: Rtools44）をダウンロード。</li>
@@ -735,10 +897,10 @@ Tip
 </ol>
 </section>
 </section>
-<section id="vs-code-quarto-の導入" class="level2" data-number="7.5">
-<h2 data-number="7.5" class="anchored" data-anchor-id="vs-code-quarto-の導入"><span class="header-section-number">7.5</span> VS Code &amp; Quarto の導入</h2>
-<section id="vs-code-本体と拡張機能" class="level3" data-number="7.5.1">
-<h3 data-number="7.5.1" class="anchored" data-anchor-id="vs-code-本体と拡張機能"><span class="header-section-number">7.5.1</span> VS Code 本体と拡張機能</h3>
+<section id="vs-code-quarto-の導入" class="level2" data-number="8.5">
+<h2 data-number="8.5" class="anchored" data-anchor-id="vs-code-quarto-の導入"><span class="header-section-number">8.5</span> VS Code &amp; Quarto の導入</h2>
+<section id="vs-code-本体と拡張機能" class="level3" data-number="8.5.1">
+<h3 data-number="8.5.1" class="anchored" data-anchor-id="vs-code-本体と拡張機能"><span class="header-section-number">8.5.1</span> VS Code 本体と拡張機能</h3>
 <ol type="1">
 <li><a href="https://code.visualstudio.com/">VS Code 公式</a> からインストール。</li>
 <li>左側の「拡張機能 (Extensions)」から以下をインストール。
@@ -751,40 +913,40 @@ Tip
 </ul></li>
 </ol>
 </section>
-<section id="quarto-cli-command-line-interface" class="level3" data-number="7.5.2">
-<h3 data-number="7.5.2" class="anchored" data-anchor-id="quarto-cli-command-line-interface"><span class="header-section-number">7.5.2</span> Quarto CLI (Command Line Interface)</h3>
+<section id="quarto-cli-command-line-interface" class="level3" data-number="8.5.2">
+<h3 data-number="8.5.2" class="anchored" data-anchor-id="quarto-cli-command-line-interface"><span class="header-section-number">8.5.2</span> Quarto CLI (Command Line Interface)</h3>
 <ol type="1">
 <li><a href="https://quarto.org/docs/get-started/">Quarto Get Started</a> から Windows 用 <code>.msi</code> をダウンロード・インストール。</li>
 <li><strong>重要</strong>: インストール後、パス反映のため <strong>VS Code を再起動</strong>する。</li>
 </ol>
 </section>
 </section>
-<section id="git-と-github-のセットアップ" class="level2" data-number="7.6">
-<h2 data-number="7.6" class="anchored" data-anchor-id="git-と-github-のセットアップ"><span class="header-section-number">7.6</span> Git と GitHub のセットアップ</h2>
-<section id="アカウントとインストール" class="level3" data-number="7.6.1">
-<h3 data-number="7.6.1" class="anchored" data-anchor-id="アカウントとインストール"><span class="header-section-number">7.6.1</span> アカウントとインストール</h3>
+<section id="git-と-github-のセットアップ" class="level2" data-number="8.6">
+<h2 data-number="8.6" class="anchored" data-anchor-id="git-と-github-のセットアップ"><span class="header-section-number">8.6</span> Git と GitHub のセットアップ</h2>
+<section id="アカウントとインストール" class="level3" data-number="8.6.1">
+<h3 data-number="8.6.1" class="anchored" data-anchor-id="アカウントとインストール"><span class="header-section-number">8.6.1</span> アカウントとインストール</h3>
 <ol type="1">
 <li><a href="https://github.com/">GitHub</a> でアカウント作成（学生は大学メアド推奨）。</li>
 <li><a href="https://gitforwindows.org/">Git for Windows</a> をインストール（デフォルト設定でOK）。</li>
 </ol>
 </section>
-<section id="ユーザー設定と認証" class="level3" data-number="7.6.2">
-<h3 data-number="7.6.2" class="anchored" data-anchor-id="ユーザー設定と認証"><span class="header-section-number">7.6.2</span> ユーザー設定と認証</h3>
+<section id="ユーザー設定と認証" class="level3" data-number="8.6.2">
+<h3 data-number="8.6.2" class="anchored" data-anchor-id="ユーザー設定と認証"><span class="header-section-number">8.6.2</span> ユーザー設定と認証</h3>
 <p>VS Code のターミナルで以下を実行。</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.name <span class="st">"Taro Tanaka"</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.email <span class="st">"taro.tanaka@univ.ac.jp"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>その後、VS Code の「ソース管理」アイコンから GitHub にサインインする。</p>
 </section>
-<section id="github-education-copilot-無料化" class="level3" data-number="7.6.3">
-<h3 data-number="7.6.3" class="anchored" data-anchor-id="github-education-copilot-無料化"><span class="header-section-number">7.6.3</span> GitHub Education (Copilot 無料化)</h3>
+<section id="github-education-copilot-無料化" class="level3" data-number="8.6.3">
+<h3 data-number="8.6.3" class="anchored" data-anchor-id="github-education-copilot-無料化"><span class="header-section-number">8.6.3</span> GitHub Education (Copilot 無料化)</h3>
 <p>博士課程学生は <strong>GitHub Copilot</strong> を無料で利用できる。 * 1. <a href="https://education.github.com/pack">GitHub Education</a> から学生証をアップロードして申請。 * 2. 承認後、VS Code に拡張機能 “GitHub Copilot” を入れ、サインインする。</p>
 </section>
 </section>
-<section id="重要セキュリティ対策-.gitignore" class="level2" data-number="7.7">
-<h2 data-number="7.7" class="anchored" data-anchor-id="重要セキュリティ対策-.gitignore"><span class="header-section-number">7.7</span> 【重要】セキュリティ対策 (.gitignore)</h2>
+<section id="重要セキュリティ対策-.gitignore" class="level2" data-number="8.7">
+<h2 data-number="8.7" class="anchored" data-anchor-id="重要セキュリティ対策-.gitignore"><span class="header-section-number">8.7</span> 【重要】セキュリティ対策 (.gitignore)</h2>
 <p>研究データ（特に PMS データや患者リスト）は、絶対に GitHub 上に公開してはならない。 Git の管理対象から除外する設定ファイル <code>.gitignore</code> を必ず設定する。</p>
-<section id="gitignore-の設定手順" class="level3" data-number="7.7.1">
-<h3 data-number="7.7.1" class="anchored" data-anchor-id="gitignore-の設定手順"><span class="header-section-number">7.7.1</span> .gitignore の設定手順</h3>
+<section id="gitignore-の設定手順" class="level3" data-number="8.7.1">
+<h3 data-number="8.7.1" class="anchored" data-anchor-id="gitignore-の設定手順"><span class="header-section-number">8.7.1</span> .gitignore の設定手順</h3>
 <p>プロジェクトフォルダの直下に <code>.gitignore</code> という名前のファイル（拡張子なし）を作成し、以下を記述する。</p>
 <pre class="gitignore"><code># R 関連のシステムファイル
 .Rproj.user
@@ -824,8 +986,8 @@ Tip
 </div>
 </section>
 </section>
-<section id="vs-code-の最適化設定-settings.json" class="level2" data-number="7.8">
-<h2 data-number="7.8" class="anchored" data-anchor-id="vs-code-の最適化設定-settings.json"><span class="header-section-number">7.8</span> VS Code の最適化設定 (settings.json)</h2>
+<section id="vs-code-の最適化設定-settings.json" class="level2" data-number="8.8">
+<h2 data-number="8.8" class="anchored" data-anchor-id="vs-code-の最適化設定-settings.json"><span class="header-section-number">8.8</span> VS Code の最適化設定 (settings.json)</h2>
 <p>R をスムーズに動かすための設定。<code>Ctrl + ,</code> → 右上のアイコン（JSONを開く）で以下を追記する。</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"r.rpath.windows"</span><span class="fu">:</span> <span class="st">"C:</span><span class="ch">\\</span><span class="st">Program Files</span><span class="ch">\\</span><span class="st">R</span><span class="ch">\\</span><span class="st">R-4.4.2</span><span class="ch">\\</span><span class="st">bin</span><span class="ch">\\</span><span class="st">x64</span><span class="ch">\\</span><span class="st">R.exe"</span><span class="fu">,</span></span>
@@ -836,16 +998,16 @@ Tip
 <span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>※ <code>httpgd</code> を使う場合は <code>install.packages("httpgd")</code> が必要。</p>
 </section>
-<section id="文書の出力-word-pdf-html" class="level2" data-number="7.9">
-<h2 data-number="7.9" class="anchored" data-anchor-id="文書の出力-word-pdf-html"><span class="header-section-number">7.9</span> 文書の出力 (Word, PDF, HTML)</h2>
+<section id="文書の出力-word-pdf-html" class="level2" data-number="8.9">
+<h2 data-number="8.9" class="anchored" data-anchor-id="文書の出力-word-pdf-html"><span class="header-section-number">8.9</span> 文書の出力 (Word, PDF, HTML)</h2>
 <p>Quarto は、1つの <code>.qmd</code> ファイルから多様な形式に出力できる。</p>
-<section id="準備pdf-エンジンのインストール" class="level3" data-number="7.9.1">
-<h3 data-number="7.9.1" class="anchored" data-anchor-id="準備pdf-エンジンのインストール"><span class="header-section-number">7.9.1</span> 準備：PDF エンジンのインストール</h3>
+<section id="準備pdf-エンジンのインストール" class="level3" data-number="8.9.1">
+<h3 data-number="8.9.1" class="anchored" data-anchor-id="準備pdf-エンジンのインストール"><span class="header-section-number">8.9.1</span> 準備：PDF エンジンのインストール</h3>
 <p>PDF 出力には LaTeX 環境が必要だが、Quarto 専用の軽量版 <code>TinyTeX</code> を使うのが最も簡単である。 ターミナルで以下を1回実行する。</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> install tinytex</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-<section id="出力形式の指定-yamlヘッダー" class="level3" data-number="7.9.2">
-<h3 data-number="7.9.2" class="anchored" data-anchor-id="出力形式の指定-yamlヘッダー"><span class="header-section-number">7.9.2</span> 出力形式の指定 (YAMLヘッダー)</h3>
+<section id="出力形式の指定-yamlヘッダー" class="level3" data-number="8.9.2">
+<h3 data-number="8.9.2" class="anchored" data-anchor-id="出力形式の指定-yamlヘッダー"><span class="header-section-number">8.9.2</span> 出力形式の指定 (YAMLヘッダー)</h3>
 <p><code>.qmd</code> ファイル冒頭を以下のように記述することで、形式を切り替えられる。</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"研究計画書"</span></span>
@@ -858,8 +1020,8 @@ Tip
 <span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">documentclass</span><span class="kw">:</span><span class="at"> scrartcl</span><span class="co"> # PDF出力用</span></span>
 <span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-<section id="出力実行-render" class="level3" data-number="7.9.3">
-<h3 data-number="7.9.3" class="anchored" data-anchor-id="出力実行-render"><span class="header-section-number">7.9.3</span> 出力実行 (Render)</h3>
+<section id="出力実行-render" class="level3" data-number="8.9.3">
+<h3 data-number="8.9.3" class="anchored" data-anchor-id="出力実行-render"><span class="header-section-number">8.9.3</span> 出力実行 (Render)</h3>
 <ol type="1">
 <li><strong>コマンドパレット</strong>: <code>Ctrl + Shift + P</code> → <code>Quarto: Render</code> を選択。</li>
 <li><strong>形式選択</strong>: <code>docx</code>, <code>pdf</code>, <code>html</code> から選択する。</li>
@@ -868,12 +1030,12 @@ Tip
 </section>
 </section>
 </section>
-<section id="トラブルシューティング" class="level1" data-number="8">
-<h1 data-number="8"><span class="header-section-number">8</span> トラブルシューティング</h1>
-<section id="mermaid-関連" class="level2" data-number="8.1">
-<h2 data-number="8.1" class="anchored" data-anchor-id="mermaid-関連"><span class="header-section-number">8.1</span> Mermaid 関連</h2>
-<section id="mermaid-の図が表示されない" class="level3" data-number="8.1.1">
-<h3 data-number="8.1.1" class="anchored" data-anchor-id="mermaid-の図が表示されない"><span class="header-section-number">8.1.1</span> Mermaid の図が表示されない</h3>
+<section id="トラブルシューティング" class="level1" data-number="9">
+<h1 data-number="9"><span class="header-section-number">9</span> トラブルシューティング</h1>
+<section id="mermaid-関連" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="mermaid-関連"><span class="header-section-number">9.1</span> Mermaid 関連</h2>
+<section id="mermaid-の図が表示されない" class="level3" data-number="9.1.1">
+<h3 data-number="9.1.1" class="anchored" data-anchor-id="mermaid-の図が表示されない"><span class="header-section-number">9.1.1</span> Mermaid の図が表示されない</h3>
 <ul>
 <li>VS Code は記法に厳格である。
 <ul>
@@ -884,16 +1046,16 @@ Tip
 </ul></li>
 </ul>
 </section>
-<section id="mermaid-図をクリックで拡大したい" class="level3" data-number="8.1.2">
-<h3 data-number="8.1.2" class="anchored" data-anchor-id="mermaid-図をクリックで拡大したい"><span class="header-section-number">8.1.2</span> Mermaid 図をクリックで拡大したい</h3>
+<section id="mermaid-図をクリックで拡大したい" class="level3" data-number="9.1.2">
+<h3 data-number="9.1.2" class="anchored" data-anchor-id="mermaid-図をクリックで拡大したい"><span class="header-section-number">9.1.2</span> Mermaid 図をクリックで拡大したい</h3>
 <p><strong>Lightbox 拡張機能</strong>をインストールし、YAMLヘッダーに以下を追加する。</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span><span class="at">   </span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">lightbox</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 </section>
-<section id="パッケージが見つからない-not-available" class="level2" data-number="8.2">
-<h2 data-number="8.2" class="anchored" data-anchor-id="パッケージが見つからない-not-available"><span class="header-section-number">8.2</span> パッケージが見つからない (not available)</h2>
+<section id="パッケージが見つからない-not-available" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="パッケージが見つからない-not-available"><span class="header-section-number">9.2</span> パッケージが見つからない (not available)</h2>
 <p>開発版 R (x.x.0) を使用時、CRAN にバイナリがない場合がある。 <code>remotes</code> パッケージを使い GitHub からインストールする。</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"remotes"</span>)</span>
@@ -901,6 +1063,54 @@ Tip
 </div>
 <hr>
 <p><strong>本マニュアルを遵守し、安全かつ効率的な研究ライフを。</strong></p>
+</section>
+</section>
+<section id="appendix-github-pages-deployment" class="level1" data-number="10">
+<h1 data-number="10"><span class="header-section-number">10</span> Appendix: GitHub Pages Deployment</h1>
+<p>作成したハンドブックや研究ポートフォリオを、Webサイトとして公開し、URL一つで共有するための手順。</p>
+<section id="準備-best-practice" class="level2" data-number="10.1">
+<h2 data-number="10.1" class="anchored" data-anchor-id="準備-best-practice"><span class="header-section-number">10.1</span> 準備 (Best Practice)</h2>
+<p>Webサーバーの仕様上、トップページにしたいファイル名は <strong><code>index.html</code></strong> にするのが標準である。</p>
+<ol type="1">
+<li><strong>Rename:</strong> メインの <code>.qmd</code> ファイルの名前を <strong><code>index.qmd</code></strong> に変更する。</li>
+<li><strong>Render:</strong> 再度Renderを行い、<code>index.html</code> を生成する。</li>
+<li><strong>Push:</strong> VSCodeからGitでCommit &amp; Pushを行う。</li>
+</ol>
+</section>
+<section id="github設定" class="level2" data-number="10.2">
+<h2 data-number="10.2" class="anchored" data-anchor-id="github設定"><span class="header-section-number">10.2</span> GitHub設定</h2>
+<ol type="1">
+<li>ブラウザでGitHubのリポジトリページを開く。</li>
+<li>上部タブ <strong>[Settings]</strong> &gt; 左サイドバー <strong>[Pages]</strong> をクリック。</li>
+<li><strong>Build and deployment</strong> セクションにて：
+<ul>
+<li><strong>Source:</strong> <code>Deploy from a branch</code> を選択。</li>
+<li><strong>Branch:</strong> <code>main</code> (または master) を選択。</li>
+<li><strong>Folder:</strong> <code>/ (root)</code> を選択。</li>
+</ul></li>
+<li><strong>[Save]</strong> ボタンをクリックする。</li>
+</ol>
+</section>
+<section id="アクセスと共有" class="level2" data-number="10.3">
+<h2 data-number="10.3" class="anchored" data-anchor-id="アクセスと共有"><span class="header-section-number">10.3</span> アクセスと共有</h2>
+<p>設定から1〜2分後、ページ上部にURLが表示される。</p>
+<ul>
+<li><strong>URL形式:</strong> <code>https://[ユーザー名].github.io/[リポジトリ名]/</code></li>
+<li><strong>共有:</strong> このURLをLINEやSlack等で共有すれば、PC・スマホ問わず閲覧可能となる。</li>
+</ul>
+<div class="callout callout-style-default callout-important callout-titled" title="⚠️ 公開設定の注意">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>⚠️ 公開設定の注意
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>GitHub Pages（無料版）を使用する場合、リポジトリの設定を <strong>Public（全世界公開）</strong> にする必要がある。 公開する前に、<strong>「個人情報」「未発表の研究データ」「緊急用パスワード」</strong>などがリポジトリ内に含まれていないか、再度確認すること。</p>
+</div>
+</div>
 </section>
 </section>
 

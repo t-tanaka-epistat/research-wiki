@@ -61,7 +61,7 @@ format:
 %%| fig-format: svg
 %%| lightbox: true
 
-flowchart LR
+flowchart TB
 subgraph Exploration["The Radar (探索)"]
     direction TB
     idea(Research Idea) --> search["AI Search<br/>Consensus/Elicit"]
@@ -181,11 +181,13 @@ Gemini/ChatGPTとの対話で生まれたアイディアやプロトコル案を
 各Studyのページ内には、以下のセクションを設ける。
 
 * **Study X: [研究タイトル]**
-  * Status: Protocol Drafting
+  * Status: `Protocol Drafting`
   * Research Question: ...
-  * GitHub Repo: Link
----
-**💡 Ideation & Draft Logs (思考の履歴) Geminiとの壁打ち結果をここに時系列で保存する**
+  * GitHub Repo: `Link`
+  
+::: {.callout-tip title="Gemini/ChatGPTとの対話履歴保存場所"} 
+Ideation & Draft Logs (思考の履歴) Geminiとの壁打ち結果をここに時系列で保存する
+:::
 
 * ▶ **2025-XX-XX: Ver 0.1 - Initial Concept (トグル)**
 
@@ -215,6 +217,67 @@ NotionにMarkdownを貼り付ける際は、**必ず「コードブロック」*
 ::: {.callout-note title="なぜコードブロックなのか？"} 
 Notionの通常テキストとして貼り付けると、勝手に整形（リスト化や太字化）され、VSCode (.qmd) に戻す際にフォーマット崩れや不要な改行が発生するため。「純粋なテキストデータ」として保存・運搬するためにコードブロックが最適である。
 :::
+
+# AI Search & Visualization: エビデンス探索の実装
+
+「気まぐれな検索」を廃止し、**Consensus / Elicit / Mapify** を用いた体系的なエビデンス収集フローを定義する。
+これらのツールで得られた知見は、ブラウザのタブで終わらせず、必ず **Notion** に資産として蓄積する。
+
+## Consensus & Elicit (AI Search)
+従来のようなキーワード検索ではなく、「リサーチクエスチョン (RQ)」を直接問いかける。
+
+### 使い分け
+* **Consensus:** 「Yes/No」で答えられる疑問や、一般的な科学的合意を知りたい時。
+    * *Prompt例:* "Does statin use increase the risk of diabetes in elderly patients?"
+* **Elicit:** 特定のトピックについて、複数の論文から表形式（Matrix）で詳細を抽出したい時。
+    * *Prompt例:* "Find papers regarding TTE implementation in oncology PMS data."
+
+### 出力結果の保管 (Notion Workflow)
+検索結果を流してしまわないために、Notionに **"Evidence Search Log"** データベースを作成し、以下のルールで記録する。
+
+**DBプロパティ構成案:**
+
+| プロパティ名 | 種類 | 用途 |
+| :--- | :--- | :--- |
+| **Query / Topic** | Title | 検索した質問文 (RQ) |
+| **AI Tool** | Select | `Consensus`, `Elicit`, `Perplexity` |
+| **Synthesis** | Text | **AIが出力した「まとめ（Synthesize）」** をコピペする。 |
+| **Result URL** | URL | 検索結果ページ自体の共有リンク。 |
+| **Key Papers** | Text | 特に重要だった論文のタイトル（Paperpileへ登録済みのもの）。 |
+| **Related Study** | Relation | `Study Portfolio DB` と紐付け。 |
+
+::: {.callout-note title="Elicitの活用テクニック"}
+Elicitで作成した論文リスト（Table）は `.bib` 形式でエクスポートできる。これをPaperpileにインポートすれば、検索から文献管理への移行がシームレスに完了する。
+:::
+
+## Mapify (Visualization)
+複雑な概念や、Consensus/Elicitで得られた大量の情報を「一枚の地図（マインドマップ）」に変換し、直感的な理解を促す。
+
+### 使用シーン
+* **新規領域の全体像把握:** "Overview of Causal Inference methods in epidemiology" などをマップ化。
+* **長文PDFの構造化:** 難解なプロトコルやガイドラインをアップロードし、要点を可視化する。
+
+### 出力結果の保管
+Mapifyの出力は動的であるため、以下の2通りの方法で Notion の **Study Portfolio (各研究ページ)** の「Ideation & Draft Logs」セクションに保存する。
+
+1.  **Embed (埋め込み):** Mapifyの共有リンクを発行し、Notionに `/embed` で埋め込む（操作可能な状態で保存）。
+2.  **Image:** 画像 (.png) としてエクスポートし、Notionに貼り付ける（視認性重視）。
+
+## エビデンス探索の全体フロー (再掲)
+
+```{mermaid}
+%%| fig-format: svg
+flowchart TB
+  RQ[Research Question] --> AI{Choose Tool}
+    AI -- "General Consensus" --> Consensus
+    AI -- "Deep Dive / Matrix" --> Elicit
+    AI -- "Concept Structure" --> Mapify
+    
+    Consensus -->|Summary Text| Notion[(Notion<br/>Search Log DB)]
+    Elicit -->|BibTeX| Paperpile[(Paperpile)]
+    Elicit -->|Summary Text| Notion
+    Mapify -->|Embed/Image| Notion
+```
 
 # Paperpile × Notion: 究極の文献管理
 「積読」を防ぎ、iPadでの快適な読書を実現するためのハイブリッド運用。
@@ -471,3 +534,33 @@ remotes::install_github("nx10/httpgd")
 ---
 **本マニュアルを遵守し、安全かつ効率的な研究ライフを。**
 
+# Appendix: GitHub Pages Deployment
+
+作成したハンドブックや研究ポートフォリオを、Webサイトとして公開し、URL一つで共有するための手順。
+
+## 準備 (Best Practice)
+Webサーバーの仕様上、トップページにしたいファイル名は **`index.html`** にするのが標準である。
+
+1.  **Rename:** メインの `.qmd` ファイルの名前を **`index.qmd`** に変更する。
+2.  **Render:** 再度Renderを行い、`index.html` を生成する。
+3.  **Push:** VSCodeからGitでCommit & Pushを行う。
+
+## GitHub設定
+1.  ブラウザでGitHubのリポジトリページを開く。
+2.  上部タブ **[Settings]** > 左サイドバー **[Pages]** をクリック。
+3.  **Build and deployment** セクションにて：
+    * **Source:** `Deploy from a branch` を選択。
+    * **Branch:** `main` (または master) を選択。
+    * **Folder:** `/ (root)` を選択。
+4.  **[Save]** ボタンをクリックする。
+
+## アクセスと共有
+設定から1〜2分後、ページ上部にURLが表示される。
+
+* **URL形式:** `https://[ユーザー名].github.io/[リポジトリ名]/`
+* **共有:** このURLをLINEやSlack等で共有すれば、PC・スマホ問わず閲覧可能となる。
+
+::: {.callout-important title="⚠️ 公開設定の注意"}
+GitHub Pages（無料版）を使用する場合、リポジトリの設定を **Public（全世界公開）** にする必要がある。
+公開する前に、**「個人情報」「未発表の研究データ」「緊急用パスワード」**などがリポジトリ内に含まれていないか、再度確認すること。
+:::
